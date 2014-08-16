@@ -40,6 +40,11 @@ var App = (function () {
     function loadQuestion() {
         if (currentQuestion < questions.length) {
             document.getElementById("question").innerHTML = questions[currentQuestion].question;
+
+            if (questions[currentQuestion].clearCode) {
+                editor.setValue('');
+            }
+
         } else {
             document.getElementById("question").innerHTML = '<h2>Proficiat</h2><p>Je hebt alle oefeningen gemaakt. Je bent klaar om aan de slag te gaan met javascript.</p>';
         }
@@ -61,7 +66,7 @@ var App = (function () {
         });
 
         // TODO: add all questions
-        questions = [nameQuestion, nameLengthQuestion, numberQuestion, booleanQuestion];
+        questions = [numberQuestion, nameQuestion, nameLengthQuestion, booleanQuestion, variableQuestion];
 
         loadQuestion();
 

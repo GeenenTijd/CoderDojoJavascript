@@ -26,6 +26,7 @@ var nameLengthQuestion = (function () {
 
     return {
         question: question,
-        validate: validate
+        validate: validate,
+        clearCode: false
     };
 })();

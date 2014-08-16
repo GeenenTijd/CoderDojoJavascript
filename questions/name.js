@@ -26,6 +26,7 @@ var nameQuestion = (function () {
 
     return {
         question: question,
-        validate: validate
+        validate: validate,
+        clearCode: true
     };
 })();

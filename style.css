@@ -79,6 +79,12 @@ p {
 
 }
 
+.thick {
+
+    font-weight: bold;
+
+}
+
 .editor {
 
     float: left;
