@@ -2,7 +2,7 @@ var nameLengthQuestion = (function () {
 
     'use strict';
 
-    var question = '<h2>Lengte van tekst</h2><p>Lengte is <code>length</code> in het Engels. Je kan <code>.length</code> gebruiken op een string om de lengte terug te geven.</p><p>Mijn naam is Glenn, als ik de lengte van mijn naam wil vinden zou ik <code>\'Glenn\'.length</code> gebruiken.</p>';
+    var question = '<h2>Lengte van tekst</h2><p>Lengte is <code>length</code> in het Engels. Je kan <code>.length</code> gebruiken op een string om de lengte terug te geven.</p><p>Mijn naam is Glenn, als ik de lengte van mijn naam wil vinden zou ik <code>\'Glenn\'.length</code> gebruiken.</p><p>Vraag de lengte van je naam op.</p>';
 
     function validate() {
         var code = App.getCode();

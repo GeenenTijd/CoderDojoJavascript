@@ -2,7 +2,7 @@ var booleanQuestion = (function () {
 
     'use strict';
 
-    var question = '<h2>Boolean</h2><p>Een boolean is een waarde om aan te geven of iets waar of niet waar is. Een boolean geeft <code>true</code> terug als het waar is en <code>false</code> als het fout is.</p><ul>Enkele voorbeelden:<li><code>2 > 5</code> (<code>false</code>)</li><li><code>8 > 3</code> (<code>true</code>)</li><li><code>2 * 2 > 4</code>(<code>false</code>)</li><li><code>2 + 1 > 2</code> (<code>true</code>)</li></ul><p>Laat ons controleren of je naam langer is dan 6.</p>';
+    var question = '<h2>Boolean</h2><p>Een boolean is een waarde om aan te geven of iets waar of niet waar is. Een boolean geeft <code>true</code> terug als het waar is en <code>false</code> als het fout is.</p><ul>Enkele voorbeelden:<li><code>2 > 5</code> (<code>false</code>)</li><li><code>8 > 3</code> (<code>true</code>)</li><li><code>2 * 2 > 4</code>(<code>false</code>)</li><li><code>2 + 1 > 2</code> (<code>true</code>)</li></ul><p>Je weet al hoe je de lengte van je naam moet opvragen, laat ons nu controleren of je naam langer is dan 6.</p>';
 
     function validate() {
         var code = App.getCode();

@@ -2,7 +2,7 @@ var nameQuestion = (function () {
 
     'use strict';
 
-    var question = '<h2>Wat is je naam?</h2><p>Schrijf je naam in aanhalingstekens. Javascript herkent alles binnen aanhalingstekens (\' \') als tekst, dit noemen we een string.</p>';
+    var question = '<h2>Wat is je naam?</h2><p>Schrijf je naam in aanhalingstekens. Javascript herkent alles binnen aanhalingstekens (\' \') als tekst, dit noemen we een string.</p><p>Schrijf je code in het tekstveld hiernaast en druk op de test knop om je code te controleren. Wanneer je code juist is kan je naar de volgende vraag.</p>';
 
     function validate() {
         var code = App.getCode();
