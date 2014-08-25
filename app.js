@@ -66,7 +66,7 @@ var App = (function () {
         });
 
         // TODO: add all questions
-        questions = [numberQuestion, nameQuestion, nameLengthQuestion, booleanQuestion, variableQuestion];
+        questions = [numberQuestion, nameQuestion, nameLengthQuestion, booleanQuestion, boolean2Question, boolean3Question, variableQuestion, variable2Question];
 
         loadQuestion();
 
