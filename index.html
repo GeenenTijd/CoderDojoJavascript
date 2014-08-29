@@ -3,13 +3,22 @@
 <head>
     <title>CoderDojo Belgium - Javascript</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!--    <script data-main="app.js" src="lib/require.js"></script>-->
+    <script src="lib/byda.min.js"></script>
 </head>
 
 <body>
 
     <div class="question">
-        <h1 class="dark">CoderDojo - Javascript</h1>
-        <div id="question">
+
+        <h1 id="title"></h2>
+        <hr/>
+        <div id="description">
+        </div>
+        
+        <div id="taskarea" class="taskarea">
+            <h2>Opdracht:</h2>
+            <p class="thick" id="task"></p>
         </div>
     </div>
 
@@ -20,28 +29,25 @@
     </div>
 
     <div class="feedback">
+        
+        <div class="explanation">
+            <p>Schrijf je code in het tekstveld hiernaast en druk op de test knop om je code te controleren. Wanneer je code juist is kan je naar de volgende vraag.</p>
+        </div>
 
         <button id="test" class="button">Test</button>
         <button id="next" class="button">Volgende</button>
 
         <div class="result">
+            
             <p id="result"></p>
+            
         </div>
 
     </div>
 
-    <script src="codemirror.js"></script>
-
-    <script src="questions/name.js"></script>
-    <script src="questions/namelength.js"></script>
-    <script src="questions/numbers.js"></script>
-    <script src="questions/boolean.js"></script>
-    <script src="questions/boolean2.js"></script>
-    <script src="questions/boolean3.js"></script>
-    <script src="questions/variable.js"></script>
-    <script src="questions/variable2.js"></script>
-
-    <script src="app.js"></script>
+    <script src="lib/include.min.js"></script>
+    <script src="lib/codemirror.min.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

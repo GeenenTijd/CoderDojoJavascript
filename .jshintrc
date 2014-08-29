@@ -16,8 +16,11 @@
     "browser": true,
     "sub": true,
     "undef": true,
+    "browser": true,
     "indent": 2,
     "globals": {
-        "App": false
+        "byda": false,
+        "define": false,
+        "CodeMirror": false,
     }
 }

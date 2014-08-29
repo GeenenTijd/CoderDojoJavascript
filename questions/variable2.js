@@ -1,46 +1,46 @@
-var variable2Question = (function () {
+include('questions.variable2', function () {
 
-    var question = '<h2>Variabele</h2><p>We hebben nu een variabele met jou naam. Maak een variabele met de naam tekens op een nieuwe lijn. Steek het aantal tekens van mijnNaam in de variabele tekens met <code>=</code>.</p><ul>Enkele voorbeelden:<li>var naam = \'Glenn\';</li><li>var leeftijd = 25;</li><li>var isCool = true;</li></ul><p>In plaats van <code>\'Glenn\'.length</code> kan ik nu ook <code>mijnNaam.length</code> gebruiken.</p>';
+    var description = '<p>We hebben nu een variabele met jou naam. Maak een variabele met de naam tekens op een nieuwe lijn. Steek het aantal tekens van mijnNaam in de variabele tekens met <code>=</code>.</p><ul>Enkele voorbeelden:<li>var naam = \'Glenn\';</li><li>var leeftijd = 25;</li><li>var isCool = true;</li></ul><p>In plaats van <code>\'Glenn\'.length</code> kan ik nu ook <code>mijnNaam.length</code> gebruiken.</p>';
 
-    function validate() {
-        var code = App.getCode();
+    function validate(code, next) {
 
         if (code.match(/(var mijnNaam)/g) === null) {
-            App.showError('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
+            next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
             return;
         }
 
         if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1/g) === null) {
-            App.showError('Schrijf je naam tussen \'\'.');
+            next('Schrijf je naam tussen \'\'.');
             return;
         }
 
         if (code.match(/(var tekens =|var tekens=)/g) === null) {
-            App.showError('Maak een variabele aan met de naam tekens ( var tekens ).');
+            next('Maak een variabele aan met de naam tekens ( var tekens ).');
             return;
         }
 
         if (code.match(/(mijnNaam.length)/g) === null) {
-            App.showError('Steek de lengte van mijnNaam in de variabele tekens ( mijnNaam.length ).');
+            next('Steek de lengte van mijnNaam in de variabele tekens ( mijnNaam.length ).');
             return;
         }
 
         try {
             eval(code);
-            console.log(mijnNaam);
             if (typeof mijnNaam === 'string' && typeof tekens === 'number' && tekens === mijnNaam.length) {
-                App.showCorrect('tekens = ' + tekens);
+                next(null, 'tekens = ' + tekens);
             } else {
-                App.showError('Maak een variabele met de naam tekens waar we het aantal tekens van mijnNaam insteken.');
+                next('Maak een variabele met de naam tekens waar we het aantal tekens van mijnNaam insteken.');
             }
         } catch (e) {
-            App.showError(e.message);
+            next(e.message);
         }
     }
 
     return {
-        question: question,
+        title: 'Variabele',
+        description: description,
+        task: 'Maak een variabele tekens met de lengte van mijnNaam.',
         validate: validate,
         clearCode: false
     };
-})();
+});

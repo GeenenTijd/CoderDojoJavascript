@@ -1,32 +1,33 @@
-var nameLengthQuestion = (function () {
+include('questions.namelength', function () {
 
     'use strict';
 
-    var question = '<h2>Lengte van tekst</h2><p>Lengte is <code>length</code> in het Engels. Je kan <code>.length</code> gebruiken op een string om de lengte terug te geven.</p><p>Mijn naam is Glenn, als ik de lengte van mijn naam wil vinden zou ik <code>\'Glenn\'.length</code> gebruiken.</p><p>Vraag de lengte van je naam op.</p>';
+    var description = '<p>Lengte is <code>length</code> in het Engels. Je kan <code>.length</code> gebruiken op een string om de lengte terug te geven.</p><p>Mijn naam is Glenn, als ik de lengte van mijn naam wil vinden zou ik <code>\'Glenn\'.length</code> gebruiken.</p>';
 
-    function validate() {
-        var code = App.getCode();
+    function validate(code, next) {
 
         if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1(.length)/g) === null) {
-            App.showError('Schrijf je naam tussen \'\' tekens. Gebruik .length om de lengte op te vragen.');
+            next('Schrijf je naam tussen \'\' tekens. Gebruik .length om de lengte op te vragen.');
             return;
         }
 
         try {
             var result = eval(code);
             if (typeof result === 'number' && result > 0) {
-                App.showCorrect(result);
+                next(null, result);
             } else {
-                App.showError('Schrijf je naam tussen \'\' tekens. Gebruik .length om de lengte op te vragen.');
+                next('Schrijf je naam tussen \'\' tekens. Gebruik .length om de lengte op te vragen.');
             }
         } catch (e) {
-            App.showError(e.message);
+            next(e.message);
         }
     }
 
     return {
-        question: question,
+        title: 'Lengte van tekst',
+        description: description,
+        task: 'Vraag de lengte van je naam op.',
         validate: validate,
         clearCode: false
     };
-})();
+});
