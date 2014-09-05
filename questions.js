@@ -1,7 +1,22 @@
-include('questions', ['questions.numbers', 'questions.name', 'questions.namelength', 'questions.boolean', 'questions.boolean2', 'questions.boolean3', 'questions.variable', 'questions.variable2'], function (numbers, name, namelength, boolean, boolean2, boolean3, variable, variable2) {
-    'use strict';
+include('questions', ['vars.questions', 'ifelse.questions', 'loops.questions', 'functions.questions'], function (varq, ifelseq, loopsq, functionsq) {
+	'use strict';
 
-    console.log('QUESTIONS');
+	var query = window.location.search.substring(1);
+	var vars = query.split("&");
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split("=");
+		if (pair[0] === 'group') {
 
-    return [numbers, name, namelength, boolean, boolean2, boolean3, variable, variable2];
+			if (pair[1] === 'variables') {
+				return varq;
+			} else if (pair[1] === 'ifelse') {
+				return ifelseq;
+			} else if (pair[1] === 'loops') {
+				return loopsq;
+			} else if (pair[1] === 'functions') {
+				return functionsq;
+			}
+		}
+	}
+	return null;
 });

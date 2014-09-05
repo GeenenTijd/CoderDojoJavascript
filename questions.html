@@ -1,0 +1,51 @@
+<html>
+
+<head>
+	<title>CoderDojo Belgium - Javascript</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+	<div class="question">
+
+		<h1 id="title"></h1>
+		<hr/>
+		<div id="description">
+		</div>
+
+		<div id="taskarea" class="taskarea">
+			<h2>Opdracht:</h2>
+			<p class="thick" id="task"></p>
+		</div>
+	</div>
+
+	<div class="editor">
+
+		<textarea id="code"></textarea>
+
+	</div>
+
+	<div class="feedback">
+
+		<div class="explanation">
+			<p>Schrijf je code in het tekstveld hiernaast en druk op de test knop om je code te controleren. Wanneer je code juist is kan je naar de volgende vraag.</p>
+		</div>
+
+		<button id="test" class="button">Test</button>
+		<button id="next" class="button">Volgende</button>
+
+		<div class="result">
+
+			<p id="result"></p>
+
+		</div>
+
+	</div>
+
+	<script src="lib/include.min.js"></script>
+	<script src="lib/codemirror.min.js"></script>
+	<script src="main.js"></script>
+</body>
+
+</html>

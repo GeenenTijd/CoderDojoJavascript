@@ -1,96 +1,93 @@
-console.log('GO INCLUDE');
-
 include('main', ['questions'], function (questions) {
-    'use strict';
+	'use strict';
 
-    console.log('MAIN');
+	var App = {
+		editor: null,
+		currentQuestion: 0,
+		nextEnabled: false,
+		questions: questions,
+		finishedTitle: 'Proficiat',
+		finishedText: '<p>Je hebt alle oefeningen gemaakt. Je bent klaar om aan de slag te gaan met javascript.</p>',
+		finishedTask: 'Laat een coach weten dat je klaar bent voor het echte werk.'
+	};
 
-    console.log(questions);
+	App.showCorrect = function (result) {
+		var elem = document.getElementById("result");
+		elem.className = 'correct';
+		elem.innerHTML = result;
 
-    var App = {
-        editor: null,
-        currentQuestion: 0,
-        nextEnabled: false,
-        questions: questions,
-        finishedTitle: 'Proficiat',
-        finishedText: '<p>Je hebt alle oefeningen gemaakt. Je bent klaar om aan de slag te gaan met javascript.</p>',
-        finishedTask: 'Laat een coach weten dat je klaar bent voor het echte werk.'
-    };
+		App.nextEnabled = true;
+		document.getElementById("next").disabled = false;
+	};
 
-    App.showCorrect = function (result) {
-        var elem = document.getElementById("result");
-        elem.className = 'correct';
-        elem.innerHTML = result;
+	App.showError = function (result) {
+		var elem = document.getElementById("result");
+		elem.className = 'wrong';
+		elem.innerHTML = result;
+	};
 
-        App.nextEnabled = true;
-        document.getElementById("next").disabled = false;
-    };
+	App.goNext = function () {
+		App.currentQuestion++;
+		App.nextEnabled = false;
+		document.getElementById("next").disabled = true;
 
-    App.showError = function (result) {
-        var elem = document.getElementById("result");
-        elem.className = 'wrong';
-        elem.innerHTML = result;
-    };
+		var elem = document.getElementById("result");
+		elem.className = '';
+		elem.innerHTML = '';
 
-    App.goNext = function () {
-        App.currentQuestion++;
-        App.nextEnabled = false;
-        document.getElementById("next").disabled = true;
+		App.loadQuestion();
+	};
 
-        var elem = document.getElementById("result");
-        elem.className = '';
-        elem.innerHTML = '';
+	App.loadQuestion = function () {
+		if (App.currentQuestion < App.questions.length) {
 
-        App.loadQuestion();
-    };
+			var question = App.questions[App.currentQuestion];
 
-    App.loadQuestion = function () {
-        if (App.currentQuestion < App.questions.length) {
+			document.getElementById("title").innerHTML = question.title;
+			document.getElementById("description").innerHTML = question.description;
+			document.getElementById("task").innerHTML = question.task;
 
-            var question = App.questions[App.currentQuestion];
+			if (question.clearCode) {
+				App.editor.setValue('');
+				if (typeof question.code !== 'undefined') {
+					App.editor.setValue(question.code);
+				}
+			}
 
-            document.getElementById("title").innerHTML = question.title;
-            document.getElementById("description").innerHTML = question.description;
-            document.getElementById("task").innerHTML = question.task;
+		} else {
+			App.showEnd();
+		}
+	};
 
-            if (question.clearCode) {
-                App.editor.setValue('');
-            }
+	App.validate = function () {
+		if (App.currentQuestion < App.questions.length) {
+			App.questions[App.currentQuestion].validate(App.editor.getValue(), function (error, result) {
+				if (error) {
+					App.showError(error);
+				} else {
+					App.showCorrect(result);
+				}
+			});
+		} else {
+			App.showEnd();
+		}
+	};
 
-        } else {
-            App.showEnd();
-        }
-    };
+	App.showEnd = function () {
+		App.editor.setValue('');
+		document.getElementById("title").innerHTML = App.finishedTitle;
+		document.getElementById("description").innerHTML = App.finishedText;
+		document.getElementById("task").innerHTML = App.finishedTask;
+	};
 
-    App.validate = function () {
-        if (App.currentQuestion < App.questions.length) {
-            App.questions[App.currentQuestion].validate(App.editor.getValue(), function (error, result) {
-                if (error) {
-                    App.showError(error);
-                } else {
-                    App.showCorrect(result);
-                }
-            });
-        } else {
-            App.showEnd();
-        }
-    };
+	App.editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		styleActiveLine: true,
+		matchBrackets: true
+	});
 
-    App.showEnd = function () {
-        App.editor.setValue('');
-        document.getElementById("title").innerHTML = App.finishedTitle;
-        document.getElementById("description").innerHTML = App.finishedText;
-        document.getElementById("task").innerHTML = App.finishedTask;
-    }
-
-    App.editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        lineNumbers: true,
-        styleActiveLine: true,
-        matchBrackets: true
-    });
-
-    App.loadQuestion();
-    document.getElementById("next").disabled = true;
-    document.getElementById("test").addEventListener("click", App.validate);
-    document.getElementById("next").addEventListener("click", App.goNext);
+	App.loadQuestion();
+	document.getElementById("next").disabled = true;
+	document.getElementById("test").addEventListener("click", App.validate);
+	document.getElementById("next").addEventListener("click", App.goNext);
 });
