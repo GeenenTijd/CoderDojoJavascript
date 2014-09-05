@@ -1,21 +1,20 @@
 include('functions.q4', function () {
-	'use strict';
 
-	var description = '<p>Getallen gebruiken in javascript is heel simpel, je moet ze gewoon intypen.</p><ul>Enkele voorbeelden:<li><code>2 + 5</code> (optellen)</li><li><code>8 - 3</code> (aftrekken)</li><li><code>2 * 2</code> (vermenigvuldigen)</li><li><code>6 / 2</code> (delen)</li></ul>';
+	var description = '<p>Je kan een functie ook van in een andere functie aanroepen.</p>';
 
 	function validate(code, next) {
 
-		if (code.match(/([0-9])(\s[+]\s|[+]|\s[+]|[+]\s)([0-9])/g) === null) {
-			next('Tel twee getallen bij elkaar op.');
+		if (code.match(/(tweeMaal\(\s2\)|tweeMaal\(2\)|tweeMaal\(\s2\s\))/g) === null) {
+			next('Roep de methode tweeMaal aan vanuit tweeMaalTwee en return het resultaat.');
 			return;
 		}
 
 		try {
-			var result = eval(code);
-			if (typeof result === 'number') {
-				next(null, result);
+			eval(code);
+			if (typeof uitkomst === 'number' && uitkomst === 4) {
+				next(null, 'uitkomst is ' + uitkomst);
 			} else {
-				next('Tel twee getallen bij elkaar op.');
+				next('Roep de methode tweeMaal aan vanuit tweeMaalTwee en return het resultaat.');
 			}
 		} catch (e) {
 			next(e.message);
@@ -23,10 +22,11 @@ include('functions.q4', function () {
 	}
 
 	return {
-		title: 'Getallen',
+		title: 'Functies',
 		description: description,
-		task: 'Tel twee getallen op.',
+		task: 'Roep de methode tweeMaal aan vanuit tweeMaalTwee.',
 		validate: validate,
-		clearCode: true
+		clearCode: true,
+		code: 'var tweeMaal = function (getal) {\n\treturn getal * 2;\n}\n\nvar tweeMaalTwee = function() {\n\t\n}\n\nvar uitkomst = tweeMaalTwee();'
 	};
 });

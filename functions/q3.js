@@ -1,21 +1,20 @@
 include('functions.q3', function () {
-	'use strict';
 
-	var description = '<p>Getallen gebruiken in javascript is heel simpel, je moet ze gewoon intypen.</p><ul>Enkele voorbeelden:<li><code>2 + 5</code> (optellen)</li><li><code>8 - 3</code> (aftrekken)</li><li><code>2 * 2</code> (vermenigvuldigen)</li><li><code>6 / 2</code> (delen)</li></ul>';
+	var description = '<p>Nu we weten hoe we een functie kunnen oproepen gaan we verder kijken hoe we een functie kunnen schrijven. Een functie voert alle code uit tussen de accolades. Wanneer een functie iets wil teruggeven gebruiken we <code>return</code>. Wat we achter het woord <code>return</code> schrijven is het object dat we teruggeven.</p>';
 
 	function validate(code, next) {
 
-		if (code.match(/([0-9])(\s[+]\s|[+]|\s[+]|[+]\s)([0-9])/g) === null) {
-			next('Tel twee getallen bij elkaar op.');
+		if (code.match(/(return)/g) === null) {
+			next('Gebruik return om aan te geven wat de functie teruggeeft.');
 			return;
 		}
 
 		try {
-			var result = eval(code);
-			if (typeof result === 'number') {
-				next(null, result);
+			eval(code);
+			if (typeof leeftijd === 'number') {
+				next(null, 'leeftijd is ' + leeftijd);
 			} else {
-				next('Tel twee getallen bij elkaar op.');
+				next('Gebruik return om aan te geven wat de functie teruggeeft.');
 			}
 		} catch (e) {
 			next(e.message);
@@ -23,10 +22,11 @@ include('functions.q3', function () {
 	}
 
 	return {
-		title: 'Getallen',
+		title: 'Functies',
 		description: description,
-		task: 'Tel twee getallen op.',
+		task: 'Laat de functie mijnLeeftijd jou leeftijd teruggeven.',
 		validate: validate,
-		clearCode: true
+		clearCode: true,
+		code: 'var mijnLeeftijd = function () {\n\t\n}\n\nvar leeftijd = mijnLeeftijd();'
 	};
 });

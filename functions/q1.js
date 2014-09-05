@@ -1,21 +1,20 @@
 include('functions.q1', function () {
-	'use strict';
 
-	var description = '<p>Hier komt functies stuff</p>';
+	var description = '<p>Een functie is het bundelen van enkele instructies voor de computer. Door de instructies te bundelen moeten we niet elke keer de instructies opnieuw schrijven maar kunnen we de functie gebruiken.</p><p>Hiernaast zie je een functie met de naam tweeMaalTwee. Je kan een functie als volgt oproepen <code>tweeMaalTwee()</code>.</p>';
 
 	function validate(code, next) {
 
-		if (code.match(/([0-9])(\s[+]\s|[+]|\s[+]|[+]\s)([0-9])/g) === null) {
-			next('Tel twee getallen bij elkaar op.');
+		if (code.match(/(var uitkomst)/g) === null) {
+			next('Maak een variabele uitkomst die het resultaat van de functie tweeMaalTwee opslaat.');
 			return;
 		}
 
 		try {
-			var result = eval(code);
-			if (typeof result === 'number') {
-				next(null, result);
+			eval(code);
+			if (typeof uitkomst === 'number' && uitkomst === 4) {
+				next(null, 'uitkomst is ' + uitkomst);
 			} else {
-				next('Tel twee getallen bij elkaar op.');
+				next('Maak een variabele uitkomst die het resultaat van de functie tweeMaalTwee opslaat.');
 			}
 		} catch (e) {
 			next(e.message);
@@ -25,8 +24,9 @@ include('functions.q1', function () {
 	return {
 		title: 'Functies',
 		description: description,
-		task: 'Tel twee getallen op.',
+		task: 'Roep de functie tweeMaalTwee op en stop het resultaat in een variabele uitkomst.',
 		validate: validate,
-		clearCode: true
+		clearCode: true,
+		code: 'var tweeMaalTwee = function () {\n\treturn 2 * 2;\n}\n'
 	};
 });

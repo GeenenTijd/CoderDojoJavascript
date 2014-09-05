@@ -1,21 +1,30 @@
 include('functions.q5', function () {
-	'use strict';
 
-	var description = '<p>Getallen gebruiken in javascript is heel simpel, je moet ze gewoon intypen.</p><ul>Enkele voorbeelden:<li><code>2 + 5</code> (optellen)</li><li><code>8 - 3</code> (aftrekken)</li><li><code>2 * 2</code> (vermenigvuldigen)</li><li><code>6 / 2</code> (delen)</li></ul>';
+	var description = '<p>Je kan gewoon verder werken met het resultaat van een functie net alsof het een variabele is.</p>';
 
 	function validate(code, next) {
 
-		if (code.match(/([0-9])(\s[+]\s|[+]|\s[+]|[+]\s)([0-9])/g) === null) {
-			next('Tel twee getallen bij elkaar op.');
+		if (code.match(/(var uitkomst)/g) === null) {
+			next('Maak een variabele uitkomst.');
+			return;
+		}
+
+		if (code.match(/(deling\(\))/g) === null) {
+			next('Tel het resultaat van de functie deling op bij het resultaat van de functie verschil.');
+			return;
+		}
+
+		if (code.match(/(verschil\(\))/g) === null) {
+			next('Tel het resultaat van de functie deling op bij het resultaat van de functie verschil.');
 			return;
 		}
 
 		try {
-			var result = eval(code);
-			if (typeof result === 'number') {
-				next(null, result);
+			eval(code);
+			if (typeof uitkomst === 'number' && uitkomst === 16) {
+				next(null, 'uitkomst is ' + uitkomst);
 			} else {
-				next('Tel twee getallen bij elkaar op.');
+				next('Maak een variabele uitkomst die de som is van de functies deling en verschil.');
 			}
 		} catch (e) {
 			next(e.message);
@@ -23,10 +32,11 @@ include('functions.q5', function () {
 	}
 
 	return {
-		title: 'Getallen',
+		title: 'Functies',
 		description: description,
-		task: 'Tel twee getallen op.',
+		task: 'Maak een variabele uitkomst die de som is van de functies deling en verschil.',
 		validate: validate,
-		clearCode: true
+		clearCode: true,
+		code: 'var verschil = function () {\n\treturn 19 - 12;\n}\n\nvar deling = function() {\n\treturn 54 / 6;\n}\n\n'
 	};
 });

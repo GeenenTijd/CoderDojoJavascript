@@ -1,21 +1,20 @@
 include('functions.q7', function () {
-	'use strict';
 
-	var description = '<p>Getallen gebruiken in javascript is heel simpel, je moet ze gewoon intypen.</p><ul>Enkele voorbeelden:<li><code>2 + 5</code> (optellen)</li><li><code>8 - 3</code> (aftrekken)</li><li><code>2 * 2</code> (vermenigvuldigen)</li><li><code>6 / 2</code> (delen)</li></ul>';
+	var description = '<p>Hiernaast zie je een functie met twee parameters. Parameters worden gesplitst met een komma. Je kan de functie als volgt oproepen <code>som(2,2)</code></p>';
 
 	function validate(code, next) {
 
-		if (code.match(/([0-9])(\s[+]\s|[+]|\s[+]|[+]\s)([0-9])/g) === null) {
-			next('Tel twee getallen bij elkaar op.');
+		if (code.match(/(som\(|som\s\()/g) === null) {
+			next('Roep de methode som op.');
 			return;
 		}
 
 		try {
-			var result = eval(code);
-			if (typeof result === 'number') {
-				next(null, result);
+			eval(code);
+			if (typeof uitkomst === 'number' && uitkomst === 10) {
+				next(null, 'uitkomst is ' + uitkomst);
 			} else {
-				next('Tel twee getallen bij elkaar op.');
+				next('Zorg dat het resultaat van de functie som 10 is.');
 			}
 		} catch (e) {
 			next(e.message);
@@ -23,10 +22,11 @@ include('functions.q7', function () {
 	}
 
 	return {
-		title: 'Getallen',
+		title: 'Functies',
 		description: description,
-		task: 'Tel twee getallen op.',
+		task: 'Roep de functie som op met twee parameters zodat het resultaat 10 is. Stop het resultaat in de variabele uitkomst.',
 		validate: validate,
-		clearCode: true
+		clearCode: true,
+		code: 'var som = function (getal1, getal2) {\n\treturn getal1 + getal2;\n}\n\nvar uitkomst ='
 	};
 });
