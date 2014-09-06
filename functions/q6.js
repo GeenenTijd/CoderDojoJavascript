@@ -44,7 +44,7 @@ include('functions.q6', function () {
 	return {
 		title: 'Functies',
 		description: description,
-		task: 'Vul de functie benIkVolwassen aan zodat wanneer de leeftijd groter of gelijk is aan 18 de tekst \'Ik ben volwaseen\' wordt teruggestuurd, anders stuur je de tekst \'Ik moet nog groeien\' terug.',
+		task: 'Vul de functie benIkVolwassen aan zodat wanneer de leeftijd groter of gelijk is aan 18 de tekst \'Ik ben volwassen\' wordt teruggestuurd, anders stuur je de tekst \'Ik moet nog groeien\' terug.',
 		validate: validate,
 		clearCode: true,
 		code: 'var benIkVolwassen = function (leeftijd) {\n\t\n}'
