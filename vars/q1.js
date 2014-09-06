@@ -1,7 +1,7 @@
 include('vars.q1', function () {
 	'use strict';
 
-	var description = '<p>Getallen gebruiken in javascript is heel simpel, je moet ze gewoon intypen.</p><ul>Enkele voorbeelden:<li><code>2 + 5</code> (optellen)</li><li><code>8 - 3</code> (aftrekken)</li><li><code>2 * 2</code> (vermenigvuldigen)</li><li><code>6 / 2</code> (delen)</li></ul>';
+	var description = '<p>Getallen gebruiken in javascript is heel simpel, je moet ze gewoon intypen.</p><ul>Enkele voorbeelden:<li><code>2 + 5</code> <code class="returns">7</code> (optellen)</li><li><code>8 - 3</code> <code class="returns">5</code> (aftrekken)</li><li><code>2 * 2</code> <code class="returns">4</code> (vermenigvuldigen)</li><li><code>6 / 2</code> <code class="returns">3</code> (delen)</li></ul>';
 
 	function validate(code, next) {
 

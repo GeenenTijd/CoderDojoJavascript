@@ -60,6 +60,11 @@ code {
 
 }
 
+code.returns {
+    background-color:#4fc34a;
+    color:#454545;
+}
+
 h1 {
 
     font-family: "open_sanslight", "Open Sans";
@@ -283,7 +288,7 @@ p {
 
 .correct {
 
-    background-color: #8bc34a;
+    background-color: #4fc34a;
 
 }
 
@@ -297,6 +302,9 @@ p {
     
     margin: 20px;
 
+}
+#description p {
+    padding-bottom:0;
 }
 
 .result {
