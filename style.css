@@ -191,7 +191,17 @@ p {
     
     padding: 0.9em 40px;
     
-    font-size: 4em;
+    font-size: 2em;
+}
+
+.toolbar .backtohome {
+    color:white;
+    padding-left: 40px;
+    color:#ededed;
+    text-decoration: none;
+}
+.backtohome:hover {
+    color:white;
 }
 
 .large {
