@@ -49,7 +49,7 @@ include('vars.q9', function () {
 	return {
 		title: 'Variabele',
 		description: description,
-		task: 'Maak een variabele mijNaam met jou naam. Maak een getal leeftijd met jou leeftijd. Maak een variabele isGroter die kijkt of de lengte van mijnNaam groter is dan leeftijd.',
+		task: 'Maak een variabele mijNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Maak een variabele isGroter die kijkt of de lengte van mijnNaam groter is dan leeftijd.',
 		validate: validate,
 		clearCode: true
 	};
