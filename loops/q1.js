@@ -1,21 +1,15 @@
 include('loops.q1', function () {
-	'use strict';
 
-	var description = '<p>Hier komt while stuff</p>';
+	var description = '<p>Scratch heeft herhaal blokjes, herhalen komt heel veel voor in het programmeren, we willen toch niet hetzelfde elke keer opnieuw typen. We starten met het herhaal-tot-blokje, in javascript is dit <code>while(){}</code>. While wil zeggen dat zolang hetgene dat tussen de haakjes staat waar is de code tussen de accolades wordt uitgevoerd.</p>';
 
 	function validate(code, next) {
 
-		if (code.match(/([0-9])(\s[+]\s|[+]|\s[+]|[+]\s)([0-9])/g) === null) {
-			next('Tel twee getallen bij elkaar op.');
-			return;
-		}
-
 		try {
 			var result = eval(code);
-			if (typeof result === 'number') {
-				next(null, result);
+			if (typeof tekst === 'string') {
+				next(null, 'tekst is ' + tekst);
 			} else {
-				next('Tel twee getallen bij elkaar op.');
+				next('Oei oei, er ging iets mis.');
 			}
 		} catch (e) {
 			next(e.message);
@@ -25,8 +19,9 @@ include('loops.q1', function () {
 	return {
 		title: 'While',
 		description: description,
-		task: 'Tel twee getallen op.',
+		task: 'Wat denk jij dat tekst gaat zijn? Test de code.',
 		validate: validate,
-		clearCode: true
+		clearCode: true,
+		code: 'var x = 0;\nvar tekst = \'A\';\n\nwhile(x < 3) {\n\ttekst = tekst + \'A\';\n\tx = x + 1;\n}'
 	};
 });
