@@ -7,45 +7,22 @@
 
 <body>
 
-	<div class="question">
-
-		<h1 id="title"></h2>
-        <hr/>
-        <div id="description">
+	<div class="homepage">
+        <div class="toolbar">
+            <h1>Coderdojo</h1>
         </div>
         
-        <div id="taskarea" class="taskarea">
-            <h2>Opdracht:</h2>
-            <p class="thick" id="task"></p>
+        <div class="centralmenu">
+            <a href="questions.html?group=variables"><h2>Variabele</h2></a>
+
+            <a href="questions.html?group=ifelse"><h2>Als dan</h2></a>
+
+            <a href="questions.html?group=loops"><h2>Herhaal</h2></a>
+
+            <a href="questions.html?group=functions"><h2>Functies</h2></a>
         </div>
-    </div>
+	</div>
 
-    <div class="editor">
-
-        <textarea id="code"></textarea>
-
-    </div>
-
-    <div class="feedback">
-        
-        <div class="explanation">
-            <p>Schrijf je code in het tekstveld hiernaast en druk op de test knop om je code te controleren. Wanneer je code juist is kan je naar de volgende vraag.</p>
-        </div>
-
-        <button id="test" class="button">Test</button>
-        <button id="next" class="button">Volgende</button>
-
-        <div class="result">
-            
-            <p id="result"></p>
-            
-        </div>
-
-    </div>
-
-    <script src="lib/include.min.js"></script>
-    <script src="lib/codemirror.min.js"></script>
-    <script src="main.js"></script>
 </body>
 
 </html>
