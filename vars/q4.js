@@ -2,7 +2,7 @@ include('vars.q4', function () {
 
 	'use strict';
 
-	var description = '<p>Een boolean is een waarde om aan te geven of iets waar of niet waar is. Een boolean geeft <code>true</code> terug als het waar is en <code>false</code> als het fout is.</p><ul>Enkele voorbeelden:<li><code>2 > 5</code> (<code>false</code>)</li><li><code>8 > 3</code> (<code>true</code>)</li><li><code>2 * 2 > 4</code>(<code>false</code>)</li><li><code>2 + 1 > 2</code> (<code>true</code>)</li></ul>';
+	var description = '<p>Een boolean is een waarde om aan te geven of iets waar of niet waar is. Een boolean geeft <code>true</code> terug als het waar is en <code>false</code> als het fout is.</p><ul>Enkele voorbeelden:<li><code>2 > 5</code> (Uitkomst: false)</li><li><code>8 > 3</code> (Uitkomst: true)</li><li><code>2 * 2 > 4</code>(Uitkomst: false)</li><li><code>2 + 1 > 2</code> (Uitkomst: true)</li></ul>';
 
 	function validate(code, next) {
 		if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1(.length)/g) === null) {
