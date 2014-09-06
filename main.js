@@ -7,8 +7,8 @@ include(['questions'], function (questions) {
 		nextEnabled: false,
 		questions: questions,
 		finishedTitle: 'Proficiat',
-		finishedText: '<p>Je hebt alle oefeningen gemaakt. Je bent klaar om aan de slag te gaan met javascript.</p>',
-		finishedTask: 'Laat een coach weten dat je klaar bent voor het echte werk.'
+		finishedText: '<p>Je hebt alle oefeningen gemaakt. Je kan met een volgende reeks aan de slag.</p>',
+		finishedTask: '<a href="index.html">Ga terug naar start</a>'
 	};
 
 	App.showCorrect = function (result) {
@@ -48,9 +48,10 @@ include(['questions'], function (questions) {
 			document.getElementById("task").innerHTML = question.task;
 
 			if (question.clearCode) {
-				App.editor.setValue('');
 				if (typeof question.code !== 'undefined') {
 					App.editor.setValue(question.code);
+				} else {
+					App.editor.setValue('');
 				}
 			}
 
@@ -74,6 +75,9 @@ include(['questions'], function (questions) {
 	};
 
 	App.showEnd = function () {
+
+		document.getElementById("next").innerHTML = 'Naar start';
+
 		App.editor.setValue('');
 		document.getElementById("title").innerHTML = App.finishedTitle;
 		document.getElementById("description").innerHTML = App.finishedText;
@@ -85,9 +89,6 @@ include(['questions'], function (questions) {
 		styleActiveLine: true,
 		matchBrackets: true
 	});
-    App.editor.refresh();
-    
-    console.log('bam');
 
 	App.loadQuestion();
 	document.getElementById("next").disabled = true;
