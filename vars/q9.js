@@ -39,7 +39,7 @@ include('vars.q9', function () {
 			if (typeof mijnNaam === 'string' && typeof leeftijd === 'number' && typeof isGroter === 'boolean') {
 				next(null, 'isGroter is ' + isGroter);
 			} else {
-				next('Maak een variabele mijNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Maak een variabele isGroter die kijkt of de lengte van mijnNaam groter is dan leeftijd.');
+				next('Maak een variabele mijnNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Maak een variabele isGroter die kijkt of de lengte van mijnNaam groter is dan leeftijd.');
 			}
 		} catch (e) {
 			next(e.message);
@@ -49,7 +49,7 @@ include('vars.q9', function () {
 	return {
 		title: 'Variabele',
 		description: description,
-		task: 'Maak een variabele mijNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Maak een variabele isGroter die kijkt of de lengte van mijnNaam groter is dan leeftijd.',
+		task: 'Maak een variabele mijnNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Steek in de variabele isGroter of de lengte van mijnNaam groter is dan leeftijd.',
 		validate: validate,
 		clearCode: true
 	};
