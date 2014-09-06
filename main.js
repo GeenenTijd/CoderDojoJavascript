@@ -1,4 +1,4 @@
-include('main', ['questions'], function (questions) {
+include(['questions'], function (questions) {
 	'use strict';
 
 	var App = {
@@ -85,6 +85,9 @@ include('main', ['questions'], function (questions) {
 		styleActiveLine: true,
 		matchBrackets: true
 	});
+    App.editor.refresh();
+    
+    console.log('bam');
 
 	App.loadQuestion();
 	document.getElementById("next").disabled = true;
