@@ -2,7 +2,7 @@ include('vars.q2', function () {
 
 	'use strict';
 
-	var description = '<p>Schrijf je naam in aanhalingstekens. Javascript herkent alles binnen aanhalingstekens (\' \') als tekst, dit noemen we een string.</p>';
+	var description = '<p>Schrijf je naam in aanhalingstekens. Javascript herkent alles binnen aanhalingstekens (\' \') als tekst, dit noemen we een string.</p><p>Bijvoorbeeld <code>\'Glenn\'</code></p>';
 
 	function validate(code, next) {
 
