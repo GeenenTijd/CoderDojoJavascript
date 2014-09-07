@@ -93,7 +93,8 @@ include(['questions'], function (questions) {
     App.editor = CodeMirror.fromTextArea(document.getElementById("code"), {
         lineNumbers: true,
         styleActiveLine: true,
-        matchBrackets: true
+        matchBrackets: true,
+        mode: 'javascript'
     });
 
     /**
