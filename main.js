@@ -93,6 +93,9 @@ include(['questions'], function (questions) {
 		matchBrackets: true
 	});
 
+  /**
+   * Loads the question which is specified in the Url
+   */
   App.loadQuestionFromUrl = function() {
     App.currentQuestion = App.getQuestionIdFromUrl();
     App.loadQuestion();
@@ -106,7 +109,7 @@ include(['questions'], function (questions) {
   App.getQuestionIdFromUrl = function() {
     var hash = window.location.hash;
     var questionId = hash.replace( /^\D+/g, '');
-    if(!isNaN(questionId)) {
+    if(!isNaN(questionId) && questionId != "" && questionId != null) {
       return questionId;
     }
     return 0;
