@@ -28,7 +28,10 @@ include(['questions'], function (questions) {
 
 	App.goNext = function () {
 		App.currentQuestion++;
-		App.nextEnabled = false;
+
+    window.location.hash = '#questions/' + App.currentQuestion;
+
+    App.nextEnabled = false;
 		document.getElementById("next").disabled = true;
 
 		var elem = document.getElementById("result");
@@ -90,8 +93,31 @@ include(['questions'], function (questions) {
 		matchBrackets: true
 	});
 
-	App.loadQuestion();
+  /**
+   * Loads the question which is specified in the Url
+   */
+  App.loadQuestionFromUrl = function() {
+    App.currentQuestion = App.getQuestionIdFromUrl();
+    App.loadQuestion();
+  }
+
+  /**
+   * Retrieves the question ID from the URL
+   *
+   * @returns {Number} the question ID or 0 if none was found
+   */
+  App.getQuestionIdFromUrl = function() {
+    var hash = window.location.hash;
+    var questionId = hash.replace( /^\D+/g, '');
+    if(!isNaN(questionId) && questionId != "" && questionId != null) {
+      return questionId;
+    }
+    return 0;
+  }
+
+  App.loadQuestionFromUrl();
 	document.getElementById("next").disabled = true;
 	document.getElementById("test").addEventListener("click", App.validate);
 	document.getElementById("next").addEventListener("click", App.goNext);
+  window.onhashchange = App.loadQuestionFromUrl;
 });
