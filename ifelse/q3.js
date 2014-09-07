@@ -24,7 +24,7 @@ include('ifelse.q3', function () {
 	return {
 		title: 'If',
 		description: description,
-		task: 'Schrijf in de if code die waar is.',
+		task: 'Schrijf tussen de if haakjes code die waar is.',
 		validate: validate,
 		clearCode: true,
 		code: 'var waarOfNietWaar = \'Ik ben niet waar\';\n\nif()\n{\n\twaarOfNietWaar = \'Ik ben waar\';\n}'

@@ -11,6 +11,9 @@ http://geenentijd.github.io/CoderDojoJavascript/
 ### Auteurs
 
 Glenn Geenen
+
 Filip Smets
+
 Toon Van de Putte
+
 Maarten Cautreels

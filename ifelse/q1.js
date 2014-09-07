@@ -1,6 +1,6 @@
 include('ifelse.q1', function () {
 
-	var description = '<p>We kennen het als-dan-blokje van scratch. In javascript is dit <code>if(){}</code> met tussen haakjes de code die we controleren of ze waar is. Als wat tussen de haakjes staat waar is wordt de code tussen de accolades uitgevoerd.</p><p>if(ikBenWaar)<br/>{<br/>//Ik kom hier<br/>}</p>';
+	var description = '<p>We kennen het als-dan-blokje van scratch. In javascript is dit if(){} met tussen haakjes de code die we controleren of ze waar is. Als wat tussen de haakjes staat waar is wordt de code tussen de accolades uitgevoerd.</p><p>if(ikBenWaar)<br/>{<br/>//Ik kom hier<br/>}</p>';
 
 	function validate(code, next) {
 		if (code.match(/(var leeftijd =)(\s[0-9]|[0-9])/g) === null) {

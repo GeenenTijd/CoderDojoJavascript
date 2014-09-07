@@ -1,6 +1,6 @@
 include('ifelse.q5', function () {
 
-	var description = '<p>Je kan in één if blok meer dan één stukje code controleren. Je hebt <code>&&</code> (en) en <code>||</code> (of). Dit is net hetzelfde zoals het en-blokje en of-blokje in scratch.</p><ul><li><code>10 > 5 && 5 > 3</code> waar</li><li><code>10 < 5 && 5 > 3</code> niet waar</li><li><code>10 < 5 || 5 > 3</code> waar</li><li><code>10 < 5 || 5 < 3</code> niet waar</li></ul>';
+	var description = '<p>Je kan in één if blok meer dan één stukje code controleren. Je hebt <code>&&</code> (en) en <code>||</code> (of). Dit is net hetzelfde zoals het en-blokje en of-blokje in scratch.</p><ul><li><code>10 > 5 && 5 > 3</code> <code class="returns">true</code></li><li><code>10 < 5 && 5 > 3</code> <code class="returns">false</code></li><li><code>10 < 5 || 5 > 3</code> <code class="returns">true</code></li><li><code>10 < 5 || 5 < 3</code> <code class="returns">false</code></li></ul>';
 
 	function validate(code, next) {
 
@@ -29,7 +29,7 @@ include('ifelse.q5', function () {
 	return {
 		title: 'If',
 		description: description,
-		task: 'Schrijf in de if code die waar is en gebruik && of ||',
+		task: 'Schrijf tussen de if haakjes code die waar is en gebruik && of ||',
 		validate: validate,
 		clearCode: true,
 		code: 'var waarOfNietWaar = \'Ik ben niet waar\';\n\nif()\n{\n\twaarOfNietWaar = \'Ik ben waar\';\n}'

@@ -1,6 +1,6 @@
 include('ifelse.q6', function () {
 
-	var description = '<p>Scratch heeft ook het als-dan-anders-blokje. In javascript is dit <code>if(){} else{}</code> met tussen haakjes de code die we controleren of ze waar is.</p><p>if( waar of niet waar)<br/>{<br/>//Ik kom hier als het waar is.<br/>}<br/>else<br/>{<br/>// Ik kom hier als het niet waar is.<br/>}</p>';
+	var description = '<p>Scratch heeft ook het als-dan-anders-blokje. In javascript is dit if(){}else{} met tussen haakjes de code die we controleren of ze waar is.</p><p>if( waar of niet waar)<br/>{<br/>//Ik kom hier als het waar is.<br/>}<br/>else<br/>{<br/>// Ik kom hier als het niet waar is.<br/>}</p>';
 
 	function validate(code, next) {
 		try {
