@@ -1,45 +1,21 @@
 include('vars.q9', function () {
 
-	var description = '<p>Nu gaan we alles nog een keer herhalen.</p>';
+	var description = '<p>Nog even verder oefenen met variabelen..</p><ul><li><code>var naam = \'Glenn\';</code></li><li><code>var getal = 25;</code></li><li><code>var isCool = true;</code></li></ul>';
 
 	function validate(code, next) {
 
-		if (code.match(/(var mijnNaam)/g) === null) {
-			next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
+		if (code.match(/(var uitkomst)/g) === null) {
+			next('Maak een variabele aan met de naam uitkomst ( var uitkomst ).');
 			return;
 		}
-
-		if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1/g) === null) {
-			next('Schrijf je naam tussen \'\'.');
-			return;
-		}
-
-		if (code.match(/(var leeftijd)/g) === null) {
-			next('Maak een variabele aan met de naam leeftijd ( var leeftijd ).');
-			return;
-		}
-
-		if (code.match(/(var isGroter)/g) === null) {
-			next('Maak een variabele aan met de naam isGroter ( var isGroter ).');
-			return;
-		}
-
-		if (code.match(/(mijnNaam.length)/g) === null) {
-			next('Kijk of de lengte van mijnNaam ( mijnNaam.length ) groter is dan leeftijd.');
-			return;
-		}
-
-		if (code.match(/(>)/g) === null) {
-			next('Kijk of de lengte van mijnNaam ( mijnNaam.length ) groter is dan leeftijd.');
-			return;
-		}
-
 		try {
 			eval(code);
-			if (typeof mijnNaam === 'string' && typeof leeftijd === 'number' && typeof isGroter === 'boolean') {
-				next(null, 'isGroter is ' + isGroter);
-			} else {
-				next('Maak een variabele mijnNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Maak een variabele isGroter die kijkt of de lengte van mijnNaam groter is dan leeftijd.');
+			if (typeof uitkomst === 'number' && typeof getal === 'number' && uitkomst === getal + 2) {
+				next(null, 'uitkomst is ' + uitkomst);
+			} else if (typeof uitkomst !== 'number') {
+                next('uitkomst is geen getal, zorg dat uitkomst gelijk is aan getal + 2.');
+            } else {
+				next('De variabele uitkomst is niet gelijk aan getal + 2.');
 			}
 		} catch (e) {
 			next(e.message);
@@ -49,8 +25,9 @@ include('vars.q9', function () {
 	return {
 		title: 'Variabele',
 		description: description,
-		task: 'Maak een variabele mijnNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Steek in de variabele isGroter of de lengte van mijnNaam groter is dan leeftijd.',
+		task: 'Maak een variabele uitkomst die getal + 2 is.',
 		validate: validate,
-		clearCode: true
+		clearCode: true,
+        code: 'var getal = 43;\n\n' 
 	};
 });

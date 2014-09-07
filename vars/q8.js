@@ -1,6 +1,6 @@
 include('vars.q8', function () {
 
-	var description = '<p>We hebben nu een variabele met jou naam. Maak een variabele met de naam tekens op een nieuwe lijn. Steek het aantal tekens van mijnNaam in de variabele tekens met <code>=</code>.</p><ul>Enkele voorbeelden:<li>var naam = \'Glenn\';</li><li>var leeftijd = 25;</li><li>var isCool = true;</li></ul><p>In plaats van <code>\'Glenn\'.length</code> kan ik nu ook <code>mijnNaam.length</code> gebruiken.</p>';
+	var description = '<p>We hebben nu een variabele met jou naam. Maak een variabele met de naam tekens op een nieuwe lijn. Steek het aantal tekens van mijnNaam in de variabele tekens met <code>=</code>.</p><ul><li><code>var naam = \'Glenn\';</code></li><li><code>var leeftijd = 25;</code></li><li><code>var isCool = true;</code></li></ul><p>In plaats van <code>\'Glenn\'.length</code> kan ik nu ook <code>mijnNaam.length</code> gebruiken.</p>';
 
 	function validate(code, next) {
 

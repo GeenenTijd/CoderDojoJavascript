@@ -7,8 +7,10 @@ include('vars.questions', [
 	'vars.q6',
 	'vars.q7',
 	'vars.q8',
-	'vars.q9'
-], function (q1, q2, q3, q4, q5, q6, q7, q8, q9) {
+	'vars.q9',
+    'vars.q10',
+    'vars.q11'
+], function (q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11) {
 	'use strict';
-	return [q1, q2, q3, q4, q5, q6, q7, q8, q9];
+	return [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11];
 });

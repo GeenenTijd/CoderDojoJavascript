@@ -2,7 +2,7 @@ include('vars.q5', function () {
 
     'use strict';
 
-    var description = '<p>Je hebt groter dan en kleiner dan gezien. Er zijn nog meer mogelijkheden. Groter dan of gelijk aan <code>>=</code> en kleiner dan of gelijk aan <code><=</code>.</p><ul>Enkele voorbeelden:<li><code>2 >= 5</code> (<code>false</code>)</li><li><code>8 >= 5 + 3</code> (<code>true</code>)</li><li><code>2 * 2 <= 4</code>(<code>true</code>)</li><li><code>2 + 1 <= 2</code> (<code>false</code>)</li></ul>';
+    var description = '<p>Je hebt groter dan en kleiner dan gezien. Er zijn nog meer mogelijkheden. Groter dan of gelijk aan <code>>=</code> en kleiner dan of gelijk aan <code><=</code>.<ul><li><code>2 >= 5</code> <code class="returns">false</code></li><li><code>8 >= 5 + 3</code> <code class="returns">true</code></li><li><code>2 * 2 <= 4</code> <code class="returns">true</code></li><li><code>2 + 1 <= 2</code> <code class="returns">false</code></li></ul></p>';
 
     function validate(code, next) {
 
