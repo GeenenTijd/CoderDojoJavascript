@@ -1,52 +1,42 @@
-include('functions.q6', function () {
+include(function () {
 
-	var description = '<p>Gebruik je kennis van If Else om het juiste resultaat terug te geven.</p>';
+    var description = '<p>Je kan gewoon verder werken met het resultaat van een functie net alsof het een variabele is.</p>';
 
-	function validate(code, next) {
+    function validate(code, next) {
 
-		if (code.match(/(if)/g) === null) {
-			next('Gebruik if( ) { } else { }');
-			return;
-		}
+        if (code.match(/(var uitkomst)/g) === null) {
+            next('Maak een variabele uitkomst.');
+            return;
+        }
 
-		if (code.match(/(else)/g) === null) {
-			next('Gebruik if( ) { } else { }');
-			return;
-		}
+        if (code.match(/(deling\(\))/g) === null) {
+            next('Tel het resultaat van de functie deling op bij het resultaat van de functie verschil.');
+            return;
+        }
 
-		if (code.match(/(\'Ik ben volwassen\')/g) === null) {
-			next('Stuur Ik ben volwassen terug als leeftijd groter of gelijk is aan 18.');
-			return;
-		}
+        if (code.match(/(verschil\(\))/g) === null) {
+            next('Tel het resultaat van de functie deling op bij het resultaat van de functie verschil.');
+            return;
+        }
 
-		if (code.match(/(\'Ik moet nog groeien\')/g) === null) {
-			next('Stuur Ik moet nog groeien terug als de leeftijd kleiner is dan 18.');
-			return;
-		}
+        try {
+            eval(code);
+            if (typeof uitkomst === 'number' && uitkomst === 16) {
+                next(null, 'uitkomst is ' + uitkomst);
+            } else {
+                next('Maak een variabele uitkomst die de som is van de functies deling en verschil.');
+            }
+        } catch (e) {
+            next(e.message);
+        }
+    }
 
-		if (code.match(/(return)/g) === null) {
-			next('Gebruik return om het resultaat van de functie terug te geven.');
-			return;
-		}
-
-		try {
-			eval(code);
-			if (benIkVolwassen(5) === 'Ik moet nog groeien' && benIkVolwassen(18) === 'Ik ben volwassen') {
-				next(null, 'uitkomst van benIkVolwassen(18) is ' + benIkVolwassen(18));
-			} else {
-				next('Vul de functie benIkVolwassen aan zodat wanneer de leeftijd groter of gelijk is aan 18 de tekst \'Ik ben volwaseen\' wordt teruggestuurd, anders stuur je de tekst \'Ik moet nog groeien\' terug.');
-			}
-		} catch (e) {
-			next(e.message);
-		}
-	}
-
-	return {
-		title: 'Functies',
-		description: description,
-		task: 'Vul de functie benIkVolwassen aan zodat wanneer de leeftijd groter of gelijk is aan 18 de tekst \'Ik ben volwassen\' wordt teruggestuurd, anders stuur je de tekst \'Ik moet nog groeien\' terug.',
-		validate: validate,
-		clearCode: true,
-		code: 'var benIkVolwassen = function (leeftijd) {\n\t\n}'
-	};
+    return {
+        title: 'Functies',
+        description: description,
+        task: 'Maak een variabele uitkomst die de som is van de functies deling en verschil.',
+        validate: validate,
+        clearCode: true,
+        code: 'function verschil () {\n\treturn 19 - 12;\n}\n\nfunction deling () {\n\treturn 54 / 6;\n}\n\n'
+    };
 });

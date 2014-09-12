@@ -1,42 +1,32 @@
-include('functions.q5', function () {
+include(function () {
 
-	var description = '<p>Je kan gewoon verder werken met het resultaat van een functie net alsof het een variabele is.</p>';
+    var description = '<p>Je kan een functie ook van in een andere functie aanroepen.</p>';
 
-	function validate(code, next) {
+    function validate(code, next) {
 
-		if (code.match(/(var uitkomst)/g) === null) {
-			next('Maak een variabele uitkomst.');
-			return;
-		}
+        if (code.match(/(tweeMaal\(\s2\)|tweeMaal\(2\)|tweeMaal\(\s2\s\))/g) === null) {
+            next('Roep de methode tweeMaal aan vanuit tweeMaalTwee en return het resultaat.');
+            return;
+        }
 
-		if (code.match(/(deling\(\))/g) === null) {
-			next('Tel het resultaat van de functie deling op bij het resultaat van de functie verschil.');
-			return;
-		}
+        try {
+            eval(code);
+            if (typeof uitkomst === 'number' && uitkomst === 4) {
+                next(null, 'uitkomst is ' + uitkomst);
+            } else {
+                next('Roep de methode tweeMaal aan vanuit tweeMaalTwee en return het resultaat.');
+            }
+        } catch (e) {
+            next(e.message);
+        }
+    }
 
-		if (code.match(/(verschil\(\))/g) === null) {
-			next('Tel het resultaat van de functie deling op bij het resultaat van de functie verschil.');
-			return;
-		}
-
-		try {
-			eval(code);
-			if (typeof uitkomst === 'number' && uitkomst === 16) {
-				next(null, 'uitkomst is ' + uitkomst);
-			} else {
-				next('Maak een variabele uitkomst die de som is van de functies deling en verschil.');
-			}
-		} catch (e) {
-			next(e.message);
-		}
-	}
-
-	return {
-		title: 'Functies',
-		description: description,
-		task: 'Maak een variabele uitkomst die de som is van de functies deling en verschil.',
-		validate: validate,
-		clearCode: true,
-		code: 'var verschil = function () {\n\treturn 19 - 12;\n}\n\nvar deling = function() {\n\treturn 54 / 6;\n}\n\n'
-	};
+    return {
+        title: 'Functies',
+        description: description,
+        task: 'Roep de methode tweeMaal aan vanuit tweeMaalTwee.',
+        validate: validate,
+        clearCode: true,
+        code: 'function tweeMaal (getal) {\n\treturn getal * 2;\n}\n\nfunction tweeMaalTwee () {\n\t\n}\n\nvar uitkomst = tweeMaalTwee();'
+    };
 });

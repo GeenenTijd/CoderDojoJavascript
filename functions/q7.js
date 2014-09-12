@@ -1,32 +1,52 @@
-include('functions.q7', function () {
+include(function () {
 
-	var description = '<p>Hiernaast zie je een functie met twee parameters. Parameters worden gesplitst met een komma. Je kan de functie als volgt oproepen <code>som(2,2)</code></p>';
+    var description = '<p>Gebruik je kennis van If Else om het juiste resultaat terug te geven.</p>';
 
-	function validate(code, next) {
+    function validate(code, next) {
 
-		if (code.match(/(som\(|som\s\()/g) === null) {
-			next('Roep de methode som op.');
-			return;
-		}
+        if (code.match(/(if)/g) === null) {
+            next('Gebruik if( ) { } else { }');
+            return;
+        }
 
-		try {
-			eval(code);
-			if (typeof uitkomst === 'number' && uitkomst === 10) {
-				next(null, 'uitkomst is ' + uitkomst);
-			} else {
-				next('Zorg dat het resultaat van de functie som 10 is.');
-			}
-		} catch (e) {
-			next(e.message);
-		}
-	}
+        if (code.match(/(else)/g) === null) {
+            next('Gebruik if( ) { } else { }');
+            return;
+        }
 
-	return {
-		title: 'Functies',
-		description: description,
-		task: 'Roep de functie som op met twee parameters zodat het resultaat 10 is. Stop het resultaat in de variabele uitkomst.',
-		validate: validate,
-		clearCode: true,
-		code: 'var som = function (getal1, getal2) {\n\treturn getal1 + getal2;\n}\n\nvar uitkomst ='
-	};
+        if (code.match(/(\'Ik ben volwassen\')/g) === null) {
+            next('Stuur Ik ben volwassen terug als leeftijd groter of gelijk is aan 18.');
+            return;
+        }
+
+        if (code.match(/(\'Ik moet nog groeien\')/g) === null) {
+            next('Stuur Ik moet nog groeien terug als de leeftijd kleiner is dan 18.');
+            return;
+        }
+
+        if (code.match(/(return)/g) === null) {
+            next('Gebruik return om het resultaat van de functie terug te geven.');
+            return;
+        }
+
+        try {
+            eval(code);
+            if (benIkVolwassen(5) === 'Ik moet nog groeien' && benIkVolwassen(18) === 'Ik ben volwassen') {
+                next(null, 'uitkomst van benIkVolwassen(18) is ' + benIkVolwassen(18));
+            } else {
+                next('Vul de functie benIkVolwassen aan zodat wanneer de leeftijd groter of gelijk is aan 18 de tekst \'Ik ben volwaseen\' wordt teruggestuurd, anders stuur je de tekst \'Ik moet nog groeien\' terug.');
+            }
+        } catch (e) {
+            next(e.message);
+        }
+    }
+
+    return {
+        title: 'Functies',
+        description: description,
+        task: 'Vul de functie benIkVolwassen aan zodat wanneer de leeftijd groter of gelijk is aan 18 de tekst \'Ik ben volwassen\' wordt teruggestuurd, anders stuur je de tekst \'Ik moet nog groeien\' terug.',
+        validate: validate,
+        clearCode: true,
+        code: 'function benIkVolwassen(leeftijd) {\n\t\n}'
+    };
 });
