@@ -1,22 +1,22 @@
-include('vars.q2', function () {
+include(function () {
 
     'use strict';
 
-    var description = '<p>Schrijf je naam in aanhalingstekens. Javascript herkent alles binnen aanhalingstekens (\' \') als tekst, dit noemen we een string.</p><p>Bijvoorbeeld <code>\'Glenn\'</code></p>';
+    var description = '<p>Lengte is length in het Engels. Je kan <code>.length</code> gebruiken op een string om de lengte terug te geven.</p><p>Mijn naam is Glenn, als ik de lengte van mijn naam wil vinden zou ik <code>\'Glenn\'.length</code> gebruiken.</p>';
 
     function validate(code, next) {
 
-        if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1/g) === null) {
-            next('Schrijf je naam tussen \'\'.');
+        if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1(.length)/g) === null) {
+            next('Schrijf je naam tussen \'\' tekens. Gebruik .length om de lengte op te vragen.');
             return;
         }
 
         try {
             var result = eval(code);
-            if (typeof result === 'string' && result.length > 0) {
+            if (typeof result === 'number' && result > 0) {
                 next(null, result);
             } else {
-                next('Zet je naam tussen \' \' tekens.');
+                next('Schrijf je naam tussen \' \' tekens. Gebruik .length om de lengte op te vragen.');
             }
         } catch (e) {
             next(e.message);
@@ -24,10 +24,10 @@ include('vars.q2', function () {
     }
 
     return {
-        title: 'Tekst',
+        title: 'Lengte van tekst',
         description: description,
-        task: 'Schrijf je naam als een string.',
+        task: 'Vraag de lengte van je naam op.',
         validate: validate,
-        clearCode: true
+        clearCode: false
     };
 });

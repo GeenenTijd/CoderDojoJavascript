@@ -1,27 +1,25 @@
-include('vars.q6', function () {
+include(function () {
 
-    'use strict';
-
-    var description = '<p>Om te kijken of twee objecten gelijk zijn gebruiken we <code>===</code>, om te kijken of twee objecten niet gelijk zijn gebruiken we <code>!==</code>.</p><ul>Enkele voorbeelden:<li><code>2 === 5</code> <code class="returns">false</code></li><li><code>8 === 5 + 3</code> <code class="returns">true</code></li><li><code>2 * 2 !== 4</code> <code class="returns">false</code></li><li><code>2 + 1 !== 2</code> <code class="returns">true</code></li></ul>';
+    var description = '<p>We hebben ondertussen al met tekst en getallen gewerkt en je weet wat een boolean is. Nu moeten we de computer dingen doen onthouden. Dit kunnen we doen met een variabele. Als we een stukje tekst in een variabele steken kunnen we later de tekst terug gebruiken via de variabele.</p><p>In javascript gebruiken we <code>var</code> om aan te geven dat we een variabele maken.<ul><li><code>var naam = \'Glenn\';</code></li><li><code>var leeftijd = 25;</code></li><li><code>var isCool = true;</code></li></ul></p>';
 
     function validate(code, next) {
 
-        if (code.match(/(\'CoderDojo\'.length)/g) === null) {
-            next('Vraag de lengte van \'CoderDojo\' ( .length ) op.');
+        if (code.match(/(var mijnNaam)/g) === null) {
+            next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
             return;
         }
 
-        if (code.match(/(===6|=== 6)/g) === null) {
-            next('Kijk of de lengte gelijk is aan 6 ( gebruik === ).');
+        if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1/g) === null) {
+            next('Schrijf je naam tussen \'\'.');
             return;
         }
 
         try {
-            var result = eval(code);
-            if (typeof result === 'boolean') {
-                next(null, result);
+            eval(code);
+            if (typeof mijnNaam === 'string') {
+                next(null, 'mijnNaam is ' + mijnNaam);
             } else {
-                next('Kijk of de lengte gelijk is aan 6 ( gebruik === ).');
+                next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
             }
         } catch (e) {
             next(e.message);
@@ -29,11 +27,10 @@ include('vars.q6', function () {
     }
 
     return {
-        title: 'Boolean',
+        title: 'Variabele',
         description: description,
-        task: 'Controleer of \'CoderDojo\' 6 tekens heeft.',
+        task: 'Maak een variabel mijnNaam met jou naam in.',
         validate: validate,
-        clearCode: true,
-        code: '\'CoderDojo\''
+        clearCode: true
     };
 });

@@ -1,22 +1,26 @@
-include('vars.q3', function () {
+include(function () {
 
     'use strict';
 
-    var description = '<p>Lengte is length in het Engels. Je kan <code>.length</code> gebruiken op een string om de lengte terug te geven.</p><p>Mijn naam is Glenn, als ik de lengte van mijn naam wil vinden zou ik <code>\'Glenn\'.length</code> gebruiken.</p>';
+    var description = '<p>Een boolean is een waarde om aan te geven of iets waar of niet waar is. Een boolean geeft true terug als het waar is en false als het fout is.</p><ul>Enkele voorbeelden:<li><code>2 > 5</code> <code class="returns">false</code></li><li><code>8 > 3</code> <code class="returns">true</code></li><li><code>2 * 2 > 4</code> <code class="returns">false</code></li><li><code>2 + 1 > 2</code> <code class="returns">true</code></li></ul>';
 
     function validate(code, next) {
-
         if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1(.length)/g) === null) {
-            next('Schrijf je naam tussen \'\' tekens. Gebruik .length om de lengte op te vragen.');
+            next('Schrijf je naam tussen aanhalingstekens, neem hier de lengte van (.length) en kijk of het langer is dan 6.');
+            return;
+        }
+
+        if (code.match(/(>6|> 6)/g) === null) {
+            next('Kijk of de lengte groter is dan 6 ( gebruik > ).');
             return;
         }
 
         try {
             var result = eval(code);
-            if (typeof result === 'number' && result > 0) {
+            if (typeof result === 'boolean') {
                 next(null, result);
             } else {
-                next('Schrijf je naam tussen \' \' tekens. Gebruik .length om de lengte op te vragen.');
+                next('Is je naam langer dan 6 tekens. ( gebruik > )');
             }
         } catch (e) {
             next(e.message);
@@ -24,9 +28,9 @@ include('vars.q3', function () {
     }
 
     return {
-        title: 'Lengte van tekst',
+        title: 'Boolean',
         description: description,
-        task: 'Vraag de lengte van je naam op.',
+        task: 'Je weet al hoe je de lengte van je naam moet opvragen, laat ons nu controleren of je naam langer is dan 6.',
         validate: validate,
         clearCode: false
     };

@@ -1,41 +1,53 @@
-include('vars.q10', function () {
+include(function () {
 
-	var description = '<p>Nog even verder oefenen met variabelen..</p><ul><li><code>var naam = \'Glenn\';</code></li><li><code>var getal = 25;</code></li><li><code>var isCool = true;</code></li></ul>';
+    var description = '<p>Nu gaan we alles nog een keer herhalen.</p>';
 
-	function validate(code, next) {
+    function validate(code, next) {
+
+        if (code.match(/(var mijnNaam)/g) === null) {
+            next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
+            return;
+        }
+
+        if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1/g) === null) {
+            next('Schrijf je naam tussen \' \'.');
+            return;
+        }
 
         if (code.match(/(var leeftijd)/g) === null) {
-			next('Maak een variabele aan met de naam leeftijd ( var leeftijd ).');
-			return;
-		}
-        
-		if (code.match(/(var uitkomst)/g) === null) {
-			next('Maak een variabele aan met de naam uitkomst ( var uitkomst ).');
-			return;
-		}
-        
-		try {
-			eval(code);
-			if (typeof uitkomst === 'number' && typeof getal === 'number' && typeof leeftijd === 'number' && uitkomst === getal + leeftijd) {
-				next(null, 'uitkomst is ' + uitkomst);
-			} else if (typeof leeftijd !== 'number') {
-                next('leeftijd is geen getal.');
-            } else if (typeof uitkomst !== 'number') {
-                next('uitkomst is geen getal, zorg dat uitkomst gelijk is aan getal + leeftijd.');
-            } else {
-				next('De variabele uitkomst is niet gelijk aan getal + leeftijd.');
-			}
-		} catch (e) {
-			next(e.message);
-		}
-	}
+            next('Maak een variabele aan met de naam leeftijd ( var leeftijd ).');
+            return;
+        }
 
-	return {
-		title: 'Variabele',
-		description: description,
-		task: 'Maak een variabele leeftijd met jou leeftijd. Maak dan een variabele uitkomst die getal + leeftijd is.',
-		validate: validate,
-		clearCode: true,
-        code: 'var getal = 13;\n\n' 
-	};
+        if (code.match(/(var isGroter)/g) === null) {
+            next('Maak een variabele aan met de naam isGroter ( var isGroter ).');
+            return;
+        }
+
+        if (code.match(/(mijnNaam.length)/g) === null) {
+            next('Kijk of de lengte van mijnNaam ( mijnNaam.length ) groter is dan leeftijd.');
+            return;
+        }
+
+        try {
+            eval(code);
+            if (typeof mijnNaam === 'string' && typeof leeftijd === 'number' && typeof isGroter === 'boolean' && isGroter === mijnNaam.length > leeftijd) {
+                next(null, 'isGroter is ' + isGroter);
+            } else if (typeof leeftijd !== 'number') {
+                next('leeftijd is geen getal.');
+            } else {
+                next('Maak een variabele mijnNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Maak een variabele isGroter die kijkt of de lengte van mijnNaam groter is dan leeftijd.');
+            }
+        } catch (e) {
+            next(e.message);
+        }
+    }
+
+    return {
+        title: 'Variabele',
+        description: description,
+        task: 'Maak een variabele mijnNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Steek in de variabele isGroter of de lengte van mijnNaam groter is dan leeftijd.',
+        validate: validate,
+        clearCode: true
+    };
 });

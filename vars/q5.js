@@ -1,27 +1,27 @@
-include('vars.q5', function () {
+include(function () {
 
     'use strict';
 
-    var description = '<p>Je hebt groter dan en kleiner dan gezien. Er zijn nog meer mogelijkheden. Groter dan of gelijk aan <code>>=</code> en kleiner dan of gelijk aan <code><=</code>.<ul><li><code>2 >= 5</code> <code class="returns">false</code></li><li><code>8 >= 5 + 3</code> <code class="returns">true</code></li><li><code>2 * 2 <= 4</code> <code class="returns">true</code></li><li><code>2 + 1 <= 2</code> <code class="returns">false</code></li></ul></p>';
+    var description = '<p>Om te kijken of twee objecten gelijk zijn gebruiken we <code>===</code>, om te kijken of twee objecten niet gelijk zijn gebruiken we <code>!==</code>.</p><ul>Enkele voorbeelden:<li><code>2 === 5</code> <code class="returns">false</code></li><li><code>8 === 5 + 3</code> <code class="returns">true</code></li><li><code>2 * 2 !== 4</code> <code class="returns">false</code></li><li><code>2 + 1 !== 2</code> <code class="returns">true</code></li></ul>';
 
     function validate(code, next) {
 
-        if (code.match(/(7*3|7 *3|7* 3|7 * 3)/g) === null) {
-            next('Controleer of 7 * 3 groter of gelijk is aan 20.');
+        if (code.match(/(\'CoderDojo\'.length)/g) === null) {
+            next('Vraag de lengte van \'CoderDojo\' ( .length ) op.');
             return;
         }
 
-        if (code.match(/(>=20|>= 20)/g) === null) {
-            next('Controleer of 7 * 3 groter of gelijk is ( >= ) aan 20.');
+        if (code.match(/(===6|=== 6)/g) === null) {
+            next('Kijk of de lengte gelijk is aan 6 ( gebruik === ).');
             return;
         }
 
         try {
             var result = eval(code);
-            if (typeof result === 'boolean' && result) {
+            if (typeof result === 'boolean') {
                 next(null, result);
             } else {
-                next('Controleer of 7 * 3 groter of gelijk is ( >= ) aan 20.');
+                next('Kijk of de lengte gelijk is aan 6 ( gebruik === ).');
             }
         } catch (e) {
             next(e.message);
@@ -31,8 +31,9 @@ include('vars.q5', function () {
     return {
         title: 'Boolean',
         description: description,
-        task: 'Controleer of 7 * 3 groter of gelijk is aan 20.',
+        task: 'Controleer of \'CoderDojo\' 6 tekens heeft.',
         validate: validate,
-        clearCode: true
+        clearCode: true,
+        code: '\'CoderDojo\''
     };
 });

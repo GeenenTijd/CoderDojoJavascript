@@ -1,26 +1,27 @@
-include('vars.q4', function () {
+include(function () {
 
     'use strict';
 
-    var description = '<p>Een boolean is een waarde om aan te geven of iets waar of niet waar is. Een boolean geeft true terug als het waar is en false als het fout is.</p><ul>Enkele voorbeelden:<li><code>2 > 5</code> <code class="returns">false</code></li><li><code>8 > 3</code> <code class="returns">true</code></li><li><code>2 * 2 > 4</code> <code class="returns">false</code></li><li><code>2 + 1 > 2</code> <code class="returns">true</code></li></ul>';
+    var description = '<p>Je hebt groter dan en kleiner dan gezien. Er zijn nog meer mogelijkheden. Groter dan of gelijk aan <code>>=</code> en kleiner dan of gelijk aan <code><=</code>.<ul><li><code>2 >= 5</code> <code class="returns">false</code></li><li><code>8 >= 5 + 3</code> <code class="returns">true</code></li><li><code>2 * 2 <= 4</code> <code class="returns">true</code></li><li><code>2 + 1 <= 2</code> <code class="returns">false</code></li></ul></p>';
 
     function validate(code, next) {
-        if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1(.length)/g) === null) {
-            next('Schrijf je naam tussen aanhalingstekens, neem hier de lengte van (.length) en kijk of het langer is dan 6.');
+
+        if (code.match(/(7*3|7 *3|7* 3|7 * 3)/g) === null) {
+            next('Controleer of 7 * 3 groter of gelijk is aan 20.');
             return;
         }
 
-        if (code.match(/(>6|> 6)/g) === null) {
-            next('Kijk of de lengte groter is dan 6 ( gebruik > ).');
+        if (code.match(/(>=20|>= 20)/g) === null) {
+            next('Controleer of 7 * 3 groter of gelijk is ( >= ) aan 20.');
             return;
         }
 
         try {
             var result = eval(code);
-            if (typeof result === 'boolean') {
+            if (typeof result === 'boolean' && result) {
                 next(null, result);
             } else {
-                next('Is je naam langer dan 6 tekens. ( gebruik > )');
+                next('Controleer of 7 * 3 groter of gelijk is ( >= ) aan 20.');
             }
         } catch (e) {
             next(e.message);
@@ -30,8 +31,8 @@ include('vars.q4', function () {
     return {
         title: 'Boolean',
         description: description,
-        task: 'Je weet al hoe je de lengte van je naam moet opvragen, laat ons nu controleren of je naam langer is dan 6.',
+        task: 'Controleer of 7 * 3 groter of gelijk is aan 20.',
         validate: validate,
-        clearCode: false
+        clearCode: true
     };
 });

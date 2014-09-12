@@ -1,21 +1,22 @@
-include('vars.q1', function () {
+include(function () {
+
     'use strict';
 
-    var description = '<p>Getallen gebruiken in javascript is heel simpel, je moet ze gewoon intypen.</p><ul><li><code>2 + 5</code> <code class="returns">7</code> (optellen)</li><li><code>8 - 3</code> <code class="returns">5</code> (aftrekken)</li><li><code>2 * 2</code> <code class="returns">4</code> (vermenigvuldigen)</li><li><code>6 / 2</code> <code class="returns">3</code> (delen)</li></ul><p>Schrijf je code in het tekstveld hiernaast.</p>';
+    var description = '<p>Schrijf je naam in aanhalingstekens. Javascript herkent alles binnen aanhalingstekens (\' \') als tekst, dit noemen we een string.</p><p>Bijvoorbeeld <code>\'Glenn\'</code></p>';
 
     function validate(code, next) {
 
-        if (code.match(/([0-9])(\s[+]\s|[+]|\s[+]|[+]\s)([0-9])/g) === null) {
-            next('Tel twee getallen bij elkaar op.');
+        if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1/g) === null) {
+            next('Schrijf je naam tussen \'\'.');
             return;
         }
 
         try {
             var result = eval(code);
-            if (typeof result === 'number') {
+            if (typeof result === 'string' && result.length > 0) {
                 next(null, result);
             } else {
-                next('Tel twee getallen bij elkaar op.');
+                next('Zet je naam tussen \' \' tekens.');
             }
         } catch (e) {
             next(e.message);
@@ -23,9 +24,9 @@ include('vars.q1', function () {
     }
 
     return {
-        title: 'Getallen',
+        title: 'Tekst',
         description: description,
-        task: 'Tel twee getallen op.',
+        task: 'Schrijf je naam als een string.',
         validate: validate,
         clearCode: true
     };
