@@ -1,0 +1,10 @@
+{
+    "name": "coder-dojo",
+    "version": "0.0.1",
+    "dependencies": {
+        "angular": "~1.2.0",
+        "angular-route": "~1.2.0",
+        "codemirror": "~4.6.0"
+    },
+    "appPath": "app"
+}

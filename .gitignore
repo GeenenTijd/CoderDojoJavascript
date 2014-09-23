@@ -1,5 +1,5 @@
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
-/*.iml
-
-## Directory-based project format:
-.idea/
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
