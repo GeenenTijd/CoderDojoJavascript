@@ -17,7 +17,7 @@ Wil je bijdragen aan het project, check de wiki.
 
 Glenn Geenen
 
-#Met dank aan
+### Met dank aan
 
 Filip Smets
 
