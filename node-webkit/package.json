@@ -1,0 +1,16 @@
+{
+  "main": "index.html",
+  "name": "CoderDojo",
+  "description": "CoderDojo Javascript Tutorial",
+  "version": "0.1.0",
+  "keywords": [ "javascript", "coderdojo", "lier" ],
+  "window": {
+    "title": "CoderDojo - Javascript",
+    "icon": "coderdojo.png",
+    "toolbar": false,
+    "width": 800,
+    "height": 600,
+    "min_width": 480,
+    "min_height": 320
+  }
+}
