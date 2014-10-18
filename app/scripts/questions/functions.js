@@ -2,20 +2,39 @@
 
     var call1 = {
         title: 'Functies',
-        task: 'Roep de functie tweeMaalTwee op en stop het resultaat in een variabele uitkomst.',
+        task: 'Lees de uitleg en ga verder.',
         templateurl: 'views/functions/call1.html',
-        code: 'function tweeMaalTwee () {\n\treturn 2 * 2;\n}\n',
+
+        code: 'function functieNaam(parameter1, parameter2, parameter3) {\n\t// Ik doe dingen.\n\t// Ik doe nog meer dingen.\n\t// Ik doe heel veel dingen.\n}\nvar uitkomst = functieNaam(1, 2, 3);',
+
         validate: function (code, next) {
-            if (code.match(/(var uitkomst)/g) === null) {
-                next('Maak een variabele uitkomst die het resultaat van de functie tweeMaalTwee opslaat.');
+            next(null, 'Ga verder');
+        }
+    };
+
+    var call2 = {
+        title: 'Functies',
+        task: 'Hoeveel gaat uitkomst zijn? Test de code.',
+        templateurl: 'views/functions/call2.html',
+        code: 'function plusTwee (getal) {\n\treturn getal + 2;\n}\nvar uitkomst = plusTwee(2);',
+        validate: function (code, next) {
+
+            if (code.match(/var uitkomst/g) === null) {
+                next('Maak een variabele uitkomst die het resultaat van de functie plusTwee opslaat.');
                 return;
             }
+
+            if (code.match(/plusTwee/g).length < 2) {
+                next('Maak een variabele uitkomst die het resultaat van de functie plusTwee opslaat.');
+                return;
+            }
+
             try {
                 eval(code);
-                if (typeof uitkomst === 'number' && uitkomst === 4) {
+                if (typeof uitkomst === 'number') {
                     next(null, 'uitkomst is ' + uitkomst);
                 } else {
-                    next('Maak een variabele uitkomst die het resultaat van de functie tweeMaalTwee opslaat.');
+                    next('De variabele uitkomst moet een getal zijn.');
                 }
             } catch (e) {
                 next(e.message);
@@ -23,13 +42,44 @@
         }
     };
 
-    var call2 = {
+    var call3 = {
+        title: 'Functies',
+        task: 'Verander de code zodat uitkomst 6 wordt.',
+        templateurl: 'views/functions/call3.html',
+        code: 'function plusTwee (getal) {\n\treturn getal + 2;\n\t// Hier kom ik nooit\n}\nvar uitkomst = plusTwee(2);',
+        validate: function (code, next) {
+            if (code.match(/var uitkomst/g) === null) {
+                next('Maak een variabele uitkomst die het resultaat van de functie plusTwee opslaat.');
+                return;
+            }
+            if (code.match(/plusTwee/g).length < 2) {
+                next('Maak een variabele uitkomst die het resultaat van de functie plusTwee opslaat.');
+                return;
+            }
+            try {
+                eval(code);
+                if (typeof uitkomst === 'number' && uitkomst === 6) {
+                    next(null, 'uitkomst is ' + uitkomst);
+                } else {
+                    next('De variabele uitkomst moet 6 zijn.');
+                }
+            } catch (e) {
+                next(e.message);
+            }
+        }
+    };
+
+    var call4 = {
         title: 'Functies',
         task: 'Roep de functie tweeMaal op en stop het resultaat in een variabele uitkomst.',
-        templateurl: 'views/functions/call2.html',
+        templateurl: 'views/functions/call4.html',
         code: 'function tweeMaal (getal) {\n\treturn getal * 2;\n}\n',
         validate: function (code, next) {
             if (code.match(/(var uitkomst)/g) === null) {
+                next('Maak een variabele uitkomst die het resultaat van de functie tweeMaal opslaat.');
+                return;
+            }
+            if (code.match(/tweeMaal/g).length < 2) {
                 next('Maak een variabele uitkomst die het resultaat van de functie tweeMaal opslaat.');
                 return;
             }
@@ -46,13 +96,17 @@
         }
     };
 
-    var call3 = {
+    var call5 = {
         title: 'Functies',
         task: 'Roep de functie mijnNaam op en stop het resultaat in een variabele uitkomst.',
-        templateurl: 'views/functions/call3.html',
+        templateurl: 'views/functions/call5.html',
         code: 'function mijnNaam() {\n\treturn \'CoderDojo\';\n}\n',
         validate: function (code, next) {
             if (code.match(/(var uitkomst)/g) === null) {
+                next('Maak een variabele uitkomst die het resultaat van de functie mijnNaam opslaat.');
+                return;
+            }
+            if (code.match(/mijnNaam/g).length < 2) {
                 next('Maak een variabele uitkomst die het resultaat van de functie mijnNaam opslaat.');
                 return;
             }
@@ -121,7 +175,7 @@
         templateurl: 'views/functions/write3.html',
         code: 'function tweeMaal (getal) {\n\treturn getal * 2;\n}\n\nfunction tweeMaalTwee () {\n\t\n}\n\nvar uitkomst = tweeMaalTwee();',
         validate: function (code, next) {
-            if (code.match(/(tweeMaal\(\s2\)|tweeMaal\(2\)|tweeMaal\(\s2\s\))/g) === null) {
+            if (code.match(/tweeMaal/g).length < 4) {
                 next('Roep de methode tweeMaal aan vanuit tweeMaalTwee en return het resultaat.');
                 return;
             }
@@ -130,7 +184,7 @@
                 if (typeof uitkomst === 'number' && uitkomst === 4) {
                     next(null, 'uitkomst is ' + uitkomst);
                 } else {
-                    next('Roep de methode tweeMaal aan vanuit tweeMaalTwee en return het resultaat.');
+                    next('Roep de methode tweeMaal aan vanuit tweeMaalTwee zodat de uitkomst 2 maal 2 is.');
                 }
             } catch (e) {
                 next(e.message);
@@ -240,16 +294,20 @@
             } else if (question === 3) {
                 return call3;
             } else if (question === 4) {
-                return write1;
+                return call4;
             } else if (question === 5) {
-                return write2;
+                return call5;
             } else if (question === 6) {
-                return write3;
+                return write1;
             } else if (question === 7) {
-                return write4;
+                return write2;
             } else if (question === 8) {
-                return practice1;
+                return write3;
             } else if (question === 9) {
+                return write4;
+            } else if (question === 10) {
+                return practice1;
+            } else if (question === 11) {
                 return practice2;
             }
             return null;
