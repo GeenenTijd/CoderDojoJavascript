@@ -175,6 +175,7 @@
         title: 'Variabele',
         task: 'Maak een variabele tekens met de lengte van mijnNaam.',
         templateurl: 'views/variables/var2.html',
+        code: 'var mijnNaam = \'CoderDojo\';\n',
         validate: function (code, next) {
             if (code.match(/(var mijnNaam)/g) === null) {
                 next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
