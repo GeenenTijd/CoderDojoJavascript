@@ -31,6 +31,9 @@
                 controllerAs: 'vm',
                 controller: 'proficiatController'
             })
+			.when('/overview', {
+                templateUrl: 'views/overview.html',
+            })
             .otherwise({
                 redirectTo: '/'
             });

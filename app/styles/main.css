@@ -68,6 +68,15 @@ p {
     height: 100%;
     overflow-x: hidden;
 }
+.center {
+    margin: 0 10%;
+    width: 80%;
+    padding: 20px 0;
+	color: #454545;
+}
+.tab {
+	padding: 0 20px;
+}
 .centralmenu {
     margin: 40px auto;
     width: 30%;
@@ -95,13 +104,13 @@ p {
     padding: 0.6em 40px;
     font-size: 2.5em;
 }
-.toolbar .backtohome {
+.toolbar a {
     color: white;
     padding-left: 40px;
     color: #ededed;
     text-decoration: none;
 }
-.backtohome:hover {
+.toolbar a:hover {
     color: white;
 }
 .large {
