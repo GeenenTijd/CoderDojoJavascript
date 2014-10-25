@@ -1,4 +1,4 @@
-(function () {
+(function variables() {
     'use strict';
 
     function variablesController($location, $routeParams, progress, questions) {
@@ -60,11 +60,12 @@
 
         function validate() {
             var code = vm.editor.getValue();
-            vm.questionValidate(code, function (err, result) {
+            vm.questionValidate(code, function validateResult(err, result) {
                 if (err) {
                     vm.result = null;
                     vm.error = err;
                 } else {
+					console.log('WTF: ' + result);
                     vm.nextDisabled = false;
                     progress.save(vm.category, vm.question);
                     vm.error = null;

@@ -1,4 +1,4 @@
-(function () {
+(function progress() {
     'use strict';
 
     function progressFactory() {

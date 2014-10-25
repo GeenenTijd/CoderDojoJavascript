@@ -1,4 +1,4 @@
-(function () {
+(function app() {
     'use strict';
 
     function config($routeProvider) {

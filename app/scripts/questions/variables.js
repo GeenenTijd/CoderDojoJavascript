@@ -1,4 +1,4 @@
-(function () {
+(function variablesq() {
 
     var intro1 = {
         title: 'Getallen',
@@ -26,7 +26,7 @@
         title: 'Tekst',
         task: 'Schrijf je naam als een string.',
         templateurl: 'views/variables/intro2.html',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1/g) === null) {
                 next('Schrijf je naam tussen \'\'.');
                 return;
@@ -48,7 +48,7 @@
         title: 'Tekst',
         task: 'Vraag de lengte van je naam op.',
         templateurl: 'views/variables/intro3.html',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1(.length)/g) === null) {
                 next('Schrijf je naam tussen \'\' tekens. Gebruik .length om de lengte op te vragen.');
                 return;
@@ -70,7 +70,7 @@
         title: 'Boolean',
         task: 'Je weet al hoe je de lengte van je naam moet opvragen, laat ons nu controleren of je naam langer is dan 6.',
         templateurl: 'views/variables/boolean1.html',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1(.length)/g) === null) {
                 next('Schrijf je naam tussen aanhalingstekens, neem hier de lengte van (.length) en kijk of het langer is dan 6.');
                 return;
@@ -82,7 +82,7 @@
             try {
                 var result = eval(code);
                 if (typeof result === 'boolean') {
-                    next(null, result);
+					next(null, result ? 'false (niet waar)' : 'true (waar)');
                 } else {
                     next('Is je naam langer dan 6 tekens. ( gebruik > )');
                 }
@@ -96,7 +96,7 @@
         title: 'Boolean',
         task: 'Controleer of 7 * 3 groter of gelijk is aan 20.',
         templateurl: 'views/variables/boolean2.html',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(7*3|7 *3|7* 3|7 * 3)/g) === null) {
                 next('Controleer of 7 * 3 groter of gelijk is aan 20.');
                 return;
@@ -108,7 +108,7 @@
             try {
                 var result = eval(code);
                 if (typeof result === 'boolean' && result) {
-                    next(null, result);
+                    next(null, result ? 'false (niet waar)' : 'true (waar)');
                 } else {
                     next('Controleer of 7 * 3 groter of gelijk is ( >= ) aan 20.');
                 }
@@ -123,7 +123,7 @@
         task: 'Controleer of \'CoderDojo\' 6 tekens heeft.',
         templateurl: 'views/variables/boolean3.html',
         code: '\'CoderDojo\'',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(\'CoderDojo\'.length)/g) === null) {
                 next('Vraag de lengte van \'CoderDojo\' ( .length ) op.');
                 return;
@@ -135,7 +135,7 @@
             try {
                 var result = eval(code);
                 if (typeof result === 'boolean') {
-                    next(null, result);
+                    next(null, result ? 'false (niet waar)' : 'true (waar)');
                 } else {
                     next('Kijk of de lengte gelijk is aan 6 ( gebruik === ).');
                 }
@@ -149,7 +149,7 @@
         title: 'Variabele',
         task: 'Maak een variabel mijnNaam met jou naam in.',
         templateurl: 'views/variables/var1.html',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(var mijnNaam)/g) === null) {
                 next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
                 return;
@@ -176,7 +176,7 @@
         task: 'Maak een variabele tekens met de lengte van mijnNaam.',
         templateurl: 'views/variables/var2.html',
         code: 'var mijnNaam = \'CoderDojo\';\n',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(var mijnNaam)/g) === null) {
                 next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
                 return;
@@ -211,7 +211,7 @@
         task: 'Maak een variabele uitkomst die getal + 2 is.',
         code: 'var getal = 43;\n\n',
         templateurl: 'views/variables/var3.html',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(var uitkomst)/g) === null) {
                 next('Maak een variabele aan met de naam uitkomst ( var uitkomst ).');
                 return;
@@ -236,7 +236,7 @@
         task: 'Maak een variabele leeftijd met jou leeftijd. Maak dan een variabele uitkomst die getal + leeftijd is.',
         code: 'var getal = 13;\n\n',
         templateurl: 'views/variables/var3.html',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(var leeftijd)/g) === null) {
                 next('Maak een variabele aan met de naam leeftijd ( var leeftijd ).');
                 return;
@@ -266,7 +266,7 @@
         title: 'Variabele',
         task: 'Maak een variabele mijnNaam met jou naam. Maak een variabele leeftijd met jou leeftijd. Steek in de variabele isGroter of de lengte van mijnNaam groter is dan leeftijd.',
         templateurl: 'views/variables/var4.html',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(var mijnNaam)/g) === null) {
                 next('Maak een variabele aan met de naam mijnNaam ( var mijnNaam ).');
                 return;

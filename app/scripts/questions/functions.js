@@ -1,4 +1,4 @@
-(function () {
+(function functionsq() {
 
     var call1 = {
         title: 'Functies',
@@ -7,7 +7,7 @@
 
         code: 'function functieNaam(parameter1, parameter2, parameter3) {\n\t// Ik doe dingen.\n\t// Ik doe nog meer dingen.\n\t// Ik doe heel veel dingen.\n}\nvar uitkomst = functieNaam(1, 2, 3);',
 
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             next(null, 'Ga verder');
         }
     };
@@ -17,7 +17,7 @@
         task: 'Hoeveel gaat uitkomst zijn? Test de code.',
         templateurl: 'views/functions/call2.html',
         code: 'function plusTwee (getal) {\n\treturn getal + 2;\n}\nvar uitkomst = plusTwee(2);',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
 
             if (code.match(/var uitkomst/g) === null) {
                 next('Maak een variabele uitkomst die het resultaat van de functie plusTwee opslaat.');
@@ -47,7 +47,7 @@
         task: 'Verander de code zodat uitkomst 6 wordt.',
         templateurl: 'views/functions/call3.html',
         code: 'function plusTwee (getal) {\n\treturn getal + 2;\n\t// Hier kom ik nooit\n}\nvar uitkomst = plusTwee(2);',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/var uitkomst/g) === null) {
                 next('Maak een variabele uitkomst die het resultaat van de functie plusTwee opslaat.');
                 return;
@@ -74,7 +74,7 @@
         task: 'Roep de functie tweeMaal op en stop het resultaat in een variabele uitkomst.',
         templateurl: 'views/functions/call4.html',
         code: 'function tweeMaal (getal) {\n\treturn getal * 2;\n}\n',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(var uitkomst)/g) === null) {
                 next('Maak een variabele uitkomst die het resultaat van de functie tweeMaal opslaat.');
                 return;
@@ -101,7 +101,7 @@
         task: 'Roep de functie mijnNaam op en stop het resultaat in een variabele uitkomst.',
         templateurl: 'views/functions/call5.html',
         code: 'function mijnNaam() {\n\treturn \'CoderDojo\';\n}\n',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(var uitkomst)/g) === null) {
                 next('Maak een variabele uitkomst die het resultaat van de functie mijnNaam opslaat.');
                 return;
@@ -128,7 +128,7 @@
         task: 'Laat de functie mijnLeeftijd jou leeftijd teruggeven.',
         templateurl: 'views/functions/write1.html',
         code: 'function mijnLeeftijd () {\n\t\n}\n\nvar leeftijd = mijnLeeftijd();',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(return)/g) === null) {
                 next('Gebruik return om aan te geven wat de functie teruggeeft.');
                 return;
@@ -151,7 +151,7 @@
         task: 'Laat de functie mijnNaam jou naam teruggeven.',
         templateurl: 'views/functions/write2.html',
         code: 'function mijnNaam () {\n\t\n}\n\nvar naam = mijnNaam();',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(return)/g) === null) {
                 next('Gebruik return om aan te geven wat de functie teruggeeft.');
                 return;
@@ -174,7 +174,7 @@
         task: 'Roep de methode tweeMaal aan vanuit tweeMaalTwee.',
         templateurl: 'views/functions/write3.html',
         code: 'function tweeMaal (getal) {\n\treturn getal * 2;\n}\n\nfunction tweeMaalTwee () {\n\t\n}\n\nvar uitkomst = tweeMaalTwee();',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/tweeMaal/g).length < 4) {
                 next('Roep de methode tweeMaal aan vanuit tweeMaalTwee en return het resultaat.');
                 return;
@@ -197,7 +197,7 @@
         task: 'Maak een variabele uitkomst die de som is van de functies deling en verschil.',
         templateurl: 'views/functions/write4.html',
         code: 'function verschil () {\n\treturn 19 - 12;\n}\n\nfunction deling () {\n\treturn 54 / 6;\n}\n\n',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(var uitkomst)/g) === null) {
                 next('Maak een variabele uitkomst.');
                 return;
@@ -228,7 +228,7 @@
         task: 'Vul de functie benIkVolwassen aan zodat wanneer de leeftijd groter of gelijk is aan 18 de tekst \'Ik ben volwassen\' wordt teruggestuurd, anders stuur je de tekst \'Ik moet nog groeien\' terug.',
         templateurl: 'views/functions/practice1.html',
         code: 'function benIkVolwassen(leeftijd) {\n\t\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(if)/g) === null) {
                 next('Gebruik if( ) { } else { }');
                 return;
@@ -267,7 +267,7 @@
         task: 'Roep de functie som op met twee parameters zodat het resultaat 10 is. Stop het resultaat in de variabele uitkomst.',
         templateurl: 'views/functions/practice2.html',
         code: 'function som (getal1, getal2) {\n\treturn getal1 + getal2;\n}\n\nvar uitkomst =',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             if (code.match(/(som\(|som\s\()/g) === null) {
                 next('Roep de methode som op.');
                 return;

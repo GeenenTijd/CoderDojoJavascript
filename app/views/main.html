@@ -1,44 +1,43 @@
 <div class="question sidebar">
-    <div class="toolbar">
-        <h1 ng-bind="vm.title">CoderDojo</h1>
-        <a href="index.html">&larr; Terug naar startscherm</a>
-    </div>
+	<div class="toolbar">
+		<h1 ng-bind="vm.title">CoderDojo</h1>
+		<a href="index.html">&larr; Terug naar startscherm</a>
+	</div>
 
-    <div class="sidemenu">
-        <div ng-include="vm.templateurl"></div>
-        <div class="taskspace" ng-show="vm.task">
-            <div id="taskarea" class="taskarea">
-                <h2>Opdracht:</h2>
-                <p class="large" id="task" ng-bind="vm.task"></p>
-            </div>
-        </div>
-    </div>
+	<div class="sidemenu">
+		<div ng-include="vm.templateurl"></div>
+		<div class="taskspace" ng-show="vm.task">
+			<div id="taskarea" class="taskarea">
+				<h2>Opdracht:</h2>
+				<p class="large" id="task" ng-bind="vm.task"></p>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="editor">
-    <div class="topeditor">
-        <textarea id="code" class="resize"></textarea>
-    </div>
+	<div class="topeditor">
+		<textarea id="code" class="resize"></textarea>
+	</div>
 </div>
 
 <div class="feedback">
 
-    <div class="toolbar">
-        <h1 class="right" ng-bind="vm.question"></h1>
-    </div>
+	<div class="toolbar">
+		<h1 class="right" ng-bind="vm.question"></h1>
+	</div>
+	<div class="sidemenu">
+		<p>Druk op 'Test' om je code te controleren. Als je code juist is kan je naar de volgende vraag. <code>Dit is wat je kan intikken</code> en <code class="returns">Dit is een juist resultaat</code>
+		</p>
+	</div>
 
-    <div class="explanation">
-        <p>Druk op 'Test' om je code te controleren. Als je code juist is kan je naar de volgende vraag. <code>Dit is wat je kan intikken</code> en <code class="returns">Dit is een juist resultaat</code>
-        </p>
-    </div>
+	<button id="test" class="button" ng-click="vm.validate()">Test</button>
+	<button id="next" class="button" ng-disabled="vm.nextDisabled" ng-click="vm.goNext()">Volgende</button>
 
-    <button id="test" class="button" ng-click="vm.validate()">Test</button>
-    <button id="next" class="button" ng-disabled="vm.nextDisabled" ng-click="vm.goNext()">Volgende</button>
-
-    <div class="result correct" ng-show="vm.result">
-        <p ng-bind="vm.result"></p>
-    </div>
-    <div class="result wrong" ng-show="vm.error">
-        <p ng-bind="vm.error"></p>
-    </div>
+	<div class="result correct" ng-show="vm.result">
+		<p ng-bind="vm.result"></p>
+	</div>
+	<div class="result wrong" ng-show="vm.error">
+		<p ng-bind="vm.error"></p>
+	</div>
 </div>

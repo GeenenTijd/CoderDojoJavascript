@@ -1,4 +1,4 @@
-(function () {
+(function loops() {
     'use strict';
 
     function loopsController($location, $routeParams, progress, questions) {
@@ -59,7 +59,7 @@
 
         function validate() {
             var code = vm.editor.getValue();
-            vm.questionValidate(code, function (err, result) {
+            vm.questionValidate(code, function validateResult(err, result) {
                 if (err) {
                     vm.result = null;
                     vm.error = err;

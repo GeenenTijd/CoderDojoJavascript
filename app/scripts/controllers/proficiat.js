@@ -1,4 +1,4 @@
-(function () {
+(function proficiat() {
     'use strict';
 
     function proficiatController($location) {

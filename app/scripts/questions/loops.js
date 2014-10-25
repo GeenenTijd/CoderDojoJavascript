@@ -1,11 +1,11 @@
-(function () {
+(function loopsq() {
 
     var while1 = {
         title: 'While',
         task: 'Wat denk jij dat tekst gaat zijn? Test of je gelijk hebt.',
         templateurl: 'views/loops/while1.html',
         code: 'var x = 0;\nvar tekst = \'A\';\n\nwhile(x < 3) {\n\ttekst = tekst + \'A\';\n\tx = x + 1;\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             try {
                 var result = eval(code);
                 if (typeof tekst === 'string') {
@@ -24,7 +24,7 @@
         task: 'Verander de code zodat tekst AAA wordt.',
         templateurl: 'views/loops/while2.html',
         code: 'var x = 0;\nvar tekst = \'A\';\n\nwhile(x < 3) {\n\ttekst = tekst + \'A\';\n\tx = x + 1;\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             try {
                 var result = eval(code);
                 if (typeof tekst === 'string' && tekst === 'AAA') {
@@ -45,7 +45,7 @@
         task: 'Welke waarde heeft x op het einde? Test of je gelijk hebt.',
         templateurl: 'views/loops/while3.html',
         code: 'var x = 0;\nwhile(x < 10) {\n\tx += 3;\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             try {
                 var result = eval(code);
                 if (typeof x === 'number') {
@@ -64,7 +64,7 @@
         task: 'Vul de while in zodat x 4 wordt.',
         templateurl: 'views/loops/while3.html',
         code: 'var x = 0;\nwhile( ) {\n\tx += 2;\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             try {
                 var result = eval(code);
                 if (typeof x === 'number') {
@@ -87,7 +87,7 @@
         task: 'Vul de while in zodat tekst \'XYXY\' wordt.',
         templateurl: 'views/loops/while5.html',
         code: 'var tekst = \'\';\nwhile( ) {\n\ttekst += \'XY\';\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             try {
                 var result = eval(code);
                 if (typeof tekst === 'string') {
@@ -110,7 +110,7 @@
         task: 'Wat denk jij dat tekst gaat zijn? Test of je gelijk hebt.',
         templateurl: 'views/loops/for1.html',
         code: 'var tekst = \'A\';\n\nfor(var i = 0; i < 3; ++i) {\n\ttekst = tekst + \'A\';\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             try {
                 var result = eval(code);
                 if (typeof tekst === 'string') {
@@ -129,7 +129,7 @@
         task: 'Verander de code zodat tekst AAA wordt.',
         templateurl: 'views/loops/for2.html',
         code: 'var tekst = \'A\';\n\nfor(var i = 0; i < 3; ++i) {\n\ttekst = tekst + \'A\';\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             try {
                 var result = eval(code);
                 if (typeof tekst === 'string' && tekst === 'AAA') {
@@ -150,7 +150,7 @@
         task: 'Welke waarde heeft x op het einde? Test of je gelijk hebt.',
         templateurl: 'views/loops/while3.html',
         code: 'var x = 0;\nfor(var i = 0; i < 3; ++i) {\n\tx += 2;\n}',
-        validate: function (code, next) {
+        validate: function validateCode(code, next) {
             try {
                 var result = eval(code);
                 if (typeof x === 'number') {
