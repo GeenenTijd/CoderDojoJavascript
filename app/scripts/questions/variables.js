@@ -68,7 +68,7 @@
 
     var boolean1 = {
         title: 'Boolean',
-        task: 'Je weet al hoe je de lengte van je naam moet opvragen, laat ons nu controleren of je naam langer is dan 6.',
+        task: 'Vergelijk of de lengte van je naam langer is dan 6.',
         templateurl: 'views/variables/boolean1.html',
         validate: function validateCode(code, next) {
             if (code.match(/([\"\'])(?:(?=(\\?))\2.)*?\1(.length)/g) === null) {
@@ -82,7 +82,7 @@
             try {
                 var result = eval(code);
                 if (typeof result === 'boolean') {
-					next(null, result ? 'false (niet waar)' : 'true (waar)');
+					next(null, result ? 'true (waar)' : 'false (niet waar)');
                 } else {
                     next('Is je naam langer dan 6 tekens. ( gebruik > )');
                 }
@@ -108,7 +108,7 @@
             try {
                 var result = eval(code);
                 if (typeof result === 'boolean' && result) {
-                    next(null, result ? 'false (niet waar)' : 'true (waar)');
+                    next(null, result ? 'true (waar)' : 'false (niet waar)');
                 } else {
                     next('Controleer of 7 * 3 groter of gelijk is ( >= ) aan 20.');
                 }
@@ -135,7 +135,7 @@
             try {
                 var result = eval(code);
                 if (typeof result === 'boolean') {
-                    next(null, result ? 'false (niet waar)' : 'true (waar)');
+                    next(null, result ? 'true (waar)' : 'false (niet waar)');
                 } else {
                     next('Kijk of de lengte gelijk is aan 6 ( gebruik === ).');
                 }
