@@ -202,11 +202,11 @@
                 next('Maak een variabele uitkomst.');
                 return;
             }
-            if (code.match(/(deling\(\))/g) === null) {
+            if (code.match(/deling/g).length < 2) {
                 next('Tel het resultaat van de functie deling op bij het resultaat van de functie verschil.');
                 return;
             }
-            if (code.match(/(verschil\(\))/g) === null) {
+            if (code.match(/verschil/g).length < 2) {
                 next('Tel het resultaat van de functie deling op bij het resultaat van de functie verschil.');
                 return;
             }
