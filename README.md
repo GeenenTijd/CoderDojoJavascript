@@ -13,7 +13,7 @@ Je kan dit ook offline gebruiken met behulp van node-webkit.
 
 Download de laatste versie van node-webkit: http://dl.node-webkit.org
 
-Download de laatste versie van onze package: http://glenngeenen.be/coderdojo/package.nw
+Download de laatste versie van onze package: http://geenentijd.github.io/CoderDojoJavascript/package.nw
 
 Voeg de package toe aan de node-webkit folder en start node-webkit.
 
