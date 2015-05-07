@@ -237,11 +237,11 @@
                 next('Gebruik if( ) { } else { }');
                 return;
             }
-            if (code.match(/(\'Ik ben volwassen\')/g) === null) {
+            if (code.match(/(Ik ben volwassen)/g) === null) {
                 next('Stuur Ik ben volwassen terug als leeftijd groter of gelijk is aan 18.');
                 return;
             }
-            if (code.match(/(\'Ik moet nog groeien\')/g) === null) {
+            if (code.match(/(Ik moet nog groeien)/g) === null) {
                 next('Stuur Ik moet nog groeien terug als de leeftijd kleiner is dan 18.');
                 return;
             }
