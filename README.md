@@ -9,13 +9,13 @@ http://geenentijd.github.io/CoderDojoJavascript/
 
 ### Offline gebruiken
 
-Je kan dit ook offline gebruiken met behulp van node-webkit.
+Je kan dit ook offline gebruiken met behulp van nwjs.
 
-Download de laatste versie van node-webkit: http://dl.node-webkit.org
+Download de laatste versie: http://nwjs.io
 
 Download de laatste versie van onze package: http://geenentijd.github.io/CoderDojoJavascript/package.nw
 
-Voeg de package toe aan de node-webkit folder en start node-webkit.
+Voeg de package toe aan de nwjs folder en start nw.
 
 ### Help Ons
 
